@@ -1,8 +1,6 @@
 import 'dart:async';
 
-import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:edu_minitoe/screens/login.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MySplashPage extends StatefulWidget {
@@ -51,7 +49,7 @@ class _MySplashPageState extends State<MySplashPage> {
                 padding: const EdgeInsets.all(35.0),
                 // child: Hero(tag: 'tag',
                 child: 
-                Center(child: Image.asset('assets/cropped-mintie-png.png')),
+                Center(child: Container(child: Image.asset('assets/cropped-mintie-png.png',fit: BoxFit.fill,))),
 
                 // createRectTween:  (begin, end) {
                 //      return MaterialRectArcTween(begin: begin, end: end);
