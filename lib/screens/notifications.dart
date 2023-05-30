@@ -1,4 +1,6 @@
 
+import 'package:edu_minitoe/consts/colors.dart';
+import 'package:edu_minitoe/screens/home.dart';
 import 'package:flutter/material.dart';
 
 class NotificationPage extends StatefulWidget {
@@ -42,16 +44,29 @@ class _NotificationPageState extends State<NotificationPage> {
                           )),
                   ),
 
-            Column(
-              children: [
-                Image.asset('assets/cropped-mintie-png.png'),
-                const Expanded(child: Row(
-                  children: [
-                    Icon(Icons.arrow_back),
-                    Text('Notifications',style: TextStyle(color: Colors.black),)
-                  ],
-                ))
-              ],
+            Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset('assets/cropped-mintie-png.png',height: 70,),
+                    Flexible(child: Row(crossAxisAlignment: CrossAxisAlignment.start,mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      InkWell(onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>const HomePage()));
+                      },
+                      child: const Icon(Icons.arrow_back,size: 25,)),
+                      const SizedBox(width: 15,),
+                      const Text('Notifications',style: TextStyle(color: MinitoeColortheme.fontcolor,
+                      fontSize: 25,fontWeight: FontWeight.bold),),
+                    ],
+                  )),
+                  const SizedBox(height: 10,),
+                  Flexible(child: Container(height: MediaQuery.of(context).size.height,
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
+                      color: Colors.pink[100]),)),
+                ],
+              ),
             )
           ],
         ),

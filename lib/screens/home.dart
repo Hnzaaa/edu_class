@@ -1,5 +1,6 @@
  
 import 'package:edu_minitoe/screens/attendence.dart';
+import 'package:edu_minitoe/screens/drawer.dart';
 import 'package:edu_minitoe/screens/login.dart';
 import 'package:edu_minitoe/screens/notifications.dart';
 import 'package:edu_minitoe/screens/report.dart';
@@ -30,7 +31,6 @@ class _HomePageState extends State<HomePage> {
   bool showUnselectedLabels = true;
 
   Color selectedColor = const Color.fromARGB(255, 228, 138, 198);
-
   // Gradient selectedGradient =
   //     const LinearGradient(colors: [Colors.red, Colors.amber]);
   // Gradient unselectedGradient =
@@ -47,45 +47,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     
     return Scaffold(
-      drawer: Drawer(width: 230,
-        backgroundColor: Colors.pinkAccent,
-        child: ListView(
-      padding: EdgeInsets.zero,
-      children:   const <Widget>[
-        DrawerHeader(
-          decoration: BoxDecoration(shape: BoxShape.rectangle,
-          // borderRadius: BorderRadius(5) ,
-            color: Colors.pink,
-          ),
-          child: Column(
-            children: [
-              CircleAvatar(backgroundColor: Colors.pinkAccent,radius: 45,
-              ),
-              Text('Name'),
-              Text('Designation'),
-              Text('ID')
-            ],
-          )
-        ),
-        ListTile(
-          leading: Icon(Icons.home),
-          title: Text('Home',style: TextStyle(color: Colors.white,fontSize: 20),),
-        ),
-        ListTile(
-          leading: Icon(Icons.calendar_month),
-          title: Text('Timetable',style: TextStyle(color: Colors.white,fontSize: 20),),
-        ),
-        ListTile(
-          leading: Icon(Icons.class_),
-          title: Text('Classes',style: TextStyle(color: Colors.white,fontSize: 20),),
-        ),
-        ListTile(
-          leading: Icon(Icons.report),
-          title: Text('Reports',style: TextStyle(color: Colors.white,fontSize: 20),),
-        ),
-      ],
-    ),
-      ),
+      drawer:   const DrawerPage(),
     body:SizedBox(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
@@ -114,10 +76,16 @@ class _HomePageState extends State<HomePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      IconButton(onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>const Drawer()));
-                      },
-                      icon: const Icon(Icons.sort_rounded,))  ,
+                     Builder(
+                        builder: (context) => GestureDetector(
+                            onTap: () {
+                              Scaffold.of(context).openDrawer();
+                            },
+                            child: const Icon(
+                              Icons.sort_rounded,
+                              // size: 30,
+                            )),
+                      ),
                       Container(width: 5,color: Colors.black,),
                       const SizedBox(width: 11,),
                       SizedBox(width: 200,height: 33,
@@ -153,32 +121,59 @@ class _HomePageState extends State<HomePage> {
                     // mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween ,
                     children: [
-                      Expanded(
-                      child: Container(height: 160,
-                      decoration: BoxDecoration(color: Colors.white,
-                      borderRadius: BorderRadius.circular(100)),
-                      // child:  const Center(child: Card(color: Colors.white,shape: CircleBorder( side: BorderSide.none ) ,
-                      //   child: Card(color:Colors.orange,elevation: 10,
-                      //   shape: CircleBorder( side: BorderSide.none ) ,
-                      //   child: Padding(
-                      //     padding: EdgeInsets.all(6.0),
-                      //     child: Text('A',style:
-                      //     TextStyle(color: Colors.white,fontSize: 20),),
-                      //   )),)),
-                      )),
+                     // Generated code for this CircleImage Widget...
+                     Expanded(
+                       child:   Padding(
+                         padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                         child: Container(
+                           width: MediaQuery.of(context).size.height/2,
+                           height: MediaQuery.of(context).size.width/2,
+                           clipBehavior: Clip.antiAlias,
+                           decoration: const BoxDecoration(
+                       color: Colors.white,
+                             shape: BoxShape.circle,
+                           ),
+                           child: Image.asset(
+                             'assets/report.png',
+                           ),
+                         ),
+                       ),
+                     ),
+                     
+
+                      // Expanded(
+                      // child: Container(height: 160,
+                      // decoration: BoxDecoration(color: Colors.white,
+                      // borderRadius: BorderRadius.circular(100)),
+                      // // child:  const Center(child: Card(color: Colors.white,shape: CircleBorder( side: BorderSide.none ) ,
+                      // //   child: Card(color:Colors.orange,elevation: 10,
+                      // //   shape: CircleBorder( side: BorderSide.none ) ,
+                      // //   child: Padding(
+                      // //     padding: EdgeInsets.all(6.0),
+                      // //     child: Text('A',style:
+                      // //     TextStyle(color: Colors.white,fontSize: 20),),
+                      // //   )),)),
+                      // )),
+
+
                       const SizedBox(width: 10,),
                       Expanded(
-                        child: Container(height: 160,decoration: BoxDecoration(color: Colors.white,
-                        borderRadius: BorderRadius.circular(100)),
-                        // child:  const Center(child: Card(color: Colors.white,shape: CircleBorder( side: BorderSide.none ) ,
-                        // child: Card(color:Colors.red,elevation: 10,
-                        // shape: CircleBorder( side: BorderSide.none ) ,
-                        // child: Padding(
-                        //   padding: EdgeInsets.all(6.0),
-                        //   child: Text('B',style:
-                        //   TextStyle(color: Colors.white,fontSize: 20),),
-                        // )),))
-                      )),
+                       child: Padding(
+                         padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                         child: Container(
+                           width: MediaQuery.of(context).size.height/2,
+                           height: MediaQuery.of(context).size.width/2,
+                           clipBehavior: Clip.antiAlias,
+                           decoration: const BoxDecoration(
+                             color: Colors.white,
+                             shape: BoxShape.circle,
+                           ),
+                           child: Image.asset(
+                             'assets/report.png',
+                           ),
+                         ),
+                       ),
+                     ),
                     ],
                   ),
                 ),
