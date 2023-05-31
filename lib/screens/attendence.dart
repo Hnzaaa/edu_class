@@ -221,7 +221,7 @@ class _AttendencePageState extends State<AttendencePage> {
                 Flexible(
                   child: Row(mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                    const CircleAvatar(radius: 40,backgroundColor: Colors.pink,),
+                    const CircleAvatar(radius: 40,backgroundColor: Color.fromARGB(255, 247, 142, 177),),
                     const SizedBox(width: 15,),
                     Flexible(
                       child: Container(height: MediaQuery.of(context).size.width/7,
@@ -237,7 +237,9 @@ class _AttendencePageState extends State<AttendencePage> {
                     ),
                   ],),
                 ),
-                Flexible(child: Row(mainAxisAlignment: MainAxisAlignment.end,
+                const Flexible(child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                      Text('Present'),
                      Text('Absent')

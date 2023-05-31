@@ -34,7 +34,7 @@ String msg,
         child: Container( width: double.infinity,
             height: 200,
             decoration: BoxDecoration(
-              color: Color(0x6CFFFFFF),
+              color: const Color(0x6CFFFFFF),
               borderRadius: BorderRadius.circular(12),
             ),)));
   }

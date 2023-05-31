@@ -1,3 +1,6 @@
+import 'dart:ui';
+
+import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:edu_minitoe/consts/colors.dart';
 import 'package:edu_minitoe/screens/drawer.dart';
 import 'package:edu_minitoe/screens/home.dart';
@@ -5,7 +8,6 @@ import 'package:edu_minitoe/screens/notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 class ReportPage extends StatefulWidget {
   const ReportPage({super.key});
 
@@ -25,6 +27,7 @@ class _ReportPageState extends State<ReportPage> {
 
   bool showSelectedLabels = true;
   bool showUnselectedLabels = true;
+  bool isChecked = false;
 
   Color selectedColor = const Color.fromARGB(255, 228, 138, 198);
   @override
@@ -34,9 +37,21 @@ class _ReportPageState extends State<ReportPage> {
 
   @override
   Widget build(BuildContext context) {
-    
+
+    Color getColor(Set<MaterialState> states) {
+      const Set<MaterialState> interactiveStates = <MaterialState>{
+        MaterialState.pressed,
+        MaterialState.hovered,
+        MaterialState.focused,
+      };
+      if (states.any(interactiveStates.contains)) {
+        return Colors.blue;
+      }
+      return Colors.red;
+    }
+
     return DefaultTabController(
-      length: 2,
+      length: 4,
       child: Scaffold(
         drawer:   const DrawerPage(),
       body:SizedBox(
@@ -118,10 +133,11 @@ class _ReportPageState extends State<ReportPage> {
                     // Text('Report',style: GoogleFonts.rubik(color: MinitoeColortheme.fontcolor,
                     // fontSize: 20,fontWeight: FontWeight.bold),),
                     Flexible(
-                      child: Row(crossAxisAlignment: CrossAxisAlignment.start,mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      child: Row(crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           DropdownButton<String>(underline: Container(
-                                height: 2,width: 100,
+                                height: 2,width: 500,
                                 color: Colors.grey,
                               ),
                             items: <String>['A', 'B', 'C', 'D'].map((String value) {
@@ -132,7 +148,10 @@ class _ReportPageState extends State<ReportPage> {
                             }).toList(),
                             onChanged: (_) {},
                           ),
-                          DropdownButton<String>(
+                          DropdownButton<String>(underline: Container(
+                                height: 2,width: 500,
+                                color: Colors.grey,
+                              ),
                            items: <String>['A', 'B', 'C', 'D'].map((String value) {
                              return DropdownMenuItem<String>(
                                value: value,
@@ -144,67 +163,193 @@ class _ReportPageState extends State<ReportPage> {
                         ],
                       ),
                     ),
-                    Flexible(child: Row(crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Flexible(child: Container(height: MediaQuery.of(context).size.height/9,
-                        width: MediaQuery.of(context).size.width/4,
-                          child: Card(color: Colors.purple,
-                          child: Column(crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const Icon(Icons.abc,color: Colors.white,),
-                              Text('Completion Report',style: GoogleFonts.rubik(color: Colors.white),textAlign: TextAlign.center,)
-                            ],
-                          ),),
-                          )),
-    
-                        Flexible(child: Container(height: MediaQuery.of(context).size.height/9,
-                        width: MediaQuery.of(context).size.width/4,
-                        child: Card(color: Colors.pink,child: Column(crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const Icon(Icons.abc,color: Colors.white,),
-                              Text(' Marks  Report ',style: GoogleFonts.rubik(color: Colors.white),
-                              textAlign: TextAlign.center,softWrap: true,)
-                            ],
-                          ),),
-                          )),
-    
-                        Flexible(child: Container(height: MediaQuery.of(context).size.height/9,
-                        width: MediaQuery.of(context).size.width/4,
-                        child: Card(color: Colors.pink,child: Column(crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const Icon(Icons.abc,color: Colors.white,),
-                              Text(' Skill    Report ',style: GoogleFonts.rubik(color: Colors.white),
-                              textAlign: TextAlign.center,softWrap: true,)
-                            ],
-                          ),),
-                          )),
-    
-                        Flexible(child: Container(height: MediaQuery.of(context).size.height/9,
-                        width: MediaQuery.of(context).size.width/4,
-                        child: Card(color: Colors.pink,child: Column(crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const Icon(Icons.abc,color: Colors.white,),
-                              Text(' Child  Report ',style: GoogleFonts.rubik(color: Colors.white),
-                              textAlign: TextAlign.center,softWrap: true,)
-                            ],
-                          ),),
-                          )),
-                      ],
-                    )),
-                    const Flexible(
-                      child: TabBar(tabs: <Widget>[
-                                    Tab(text: 'Completed',),
-                                    Tab(text: 'Pending',
+                    
+                        
+                     Flexible(
+                       child: DefaultTabController(
+                              length: 4,
+                              child: Container( 
+                                child: Column(
+                                  children: <Widget>[
+                                    ButtonsTabBar(
+                                      // physics: const NeverScrollableScrollPhysics() ,
+                                      duration: 0,
+                                      elevation: 5,
+                                      radius: 12,
+                                      // contentPadding: const EdgeInsets.all(14) ,
+                                      contentPadding: const EdgeInsets.symmetric(horizontal: 14),
+                                      borderWidth: 0,
+                                      // backgroundColor: Colors.pink,
+                                      // borderColor: Colors.transparent,
+                                      unselectedBackgroundColor: Colors.pink,
+                                      center: true,
+                                      decoration: const BoxDecoration(
+                                        gradient: LinearGradient(
+                                          colors: <Color>[
+                                            Color.fromARGB(255, 70, 13, 161),
+                                            Color.fromARGB(255, 105, 25, 210),
+                                            Color.fromARGB(255, 98, 113, 247),
+                                          ],
+                                        ),
+                                      ),
+                                      unselectedLabelStyle: const TextStyle(color: Colors.white),
+                                      labelStyle: const TextStyle(color: Colors.white,),
+                                      height: 100,
+                                      tabs: const [
+                                         Tab(
+                                          text: "\nCompletion\n  Report",
+                                          // child: Column(crossAxisAlignment: CrossAxisAlignment.center,
+                                          //   children: [Icon(Icons.report),
+                                          //     Text('Completion Report')
+                                          //   ],
+                                          // ),
+                                         ),
+                                         Tab(
+                                           text: "\n Marks\nReport",
+                                         ),
+                                         Tab(
+                                         text: "\n Skill\nReport",),
+                                         Tab(
+                                         text: "\n Child\nReport",),
+                                       ],
+                                    ),
+                                      Expanded(
+                                      child: TabBarView(
+                                        children:  <Widget>[
+                                          Container(
+                                            child: const Expanded(
+                                            child: TabBar( 
+                                              tabs: <Widget>[
+                                              Tab(text: 'Completed',),
+                                              Tab(text: 'Pending',
+                                              ),
+                                            ],
+                                            labelColor: MinitoeColortheme.fontcolor,
+                                            ),
+                                             ),
+                                          ),
+                                           const Center(
+                                             child: Text('Marks Report'),
+                                           ),
+                                           const Center(
+                                             child: Text('Skill Report'),
+                                           ),
+                                           const Center(
+                                             child: Text('Child Report'),
+                                           ),
+                                         ],
+                                      ),
                                     ),
                                   ],
-                                  labelColor: MinitoeColortheme.fontcolor,
-                                  ),
-                    ),
-                    // TabBarView(children: [
+                                ),
+                              ),
+                            ),
+                     ),
+                     const SizedBox(height: 10,),
+                    // Flexible(child: Row(crossAxisAlignment: CrossAxisAlignment.start,
+                    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //   children: [
+                    //     Flexible(child: Container(height: MediaQuery.of(context).size.height/9,
+                    //     width: MediaQuery.of(context).size.width/4,
+                    //       child: Card(color: Colors.purple,
+                    //       child: Column(crossAxisAlignment: CrossAxisAlignment.center,
+                    //         children: [
+                    //           const Icon(Icons.abc,color: Colors.white,),
+                    //           Text('Completion Report',style: GoogleFonts.rubik(color: Colors.white),textAlign: TextAlign.center,)
+                    //         ],
+                    //       ),),
+                    //       )),
+    
+                    //     Flexible(child: Container(height: MediaQuery.of(context).size.height/9,
+                    //     width: MediaQuery.of(context).size.width/4,
+                    //     child: Card(color: Colors.pink,child: Column(crossAxisAlignment: CrossAxisAlignment.center,
+                    //         children: [
+                    //           const Icon(Icons.abc,color: Colors.white,),
+                    //           Text(' Marks  Report ',style: GoogleFonts.rubik(color: Colors.white),
+                    //           textAlign: TextAlign.center,softWrap: true,)
+                    //         ],
+                    //       ),),
+                    //       )),
+    
+                    //     Flexible(child: Container(height: MediaQuery.of(context).size.height/9,
+                    //     width: MediaQuery.of(context).size.width/4,
+                    //     child: Card(color: Colors.pink,child: Column(crossAxisAlignment: CrossAxisAlignment.center,
+                    //         children: [
+                    //           const Icon(Icons.abc,color: Colors.white,),
+                    //           Text(' Skill    Report ',style: GoogleFonts.rubik(color: Colors.white),
+                    //           textAlign: TextAlign.center,softWrap: true,)
+                    //         ],
+                    //       ),),
+                    //       )),
+    
+                    //     Flexible(child: Container(height: MediaQuery.of(context).size.height/9,
+                    //     width: MediaQuery.of(context).size.width/4,
+                    //     child: Card(color: Colors.pink,child: Column(crossAxisAlignment: CrossAxisAlignment.center,
+                    //         children: [
+                    //           const Icon(Icons.abc,color: Colors.white,),
+                    //           Text(' Child  Report ',style: GoogleFonts.rubik(color: Colors.white),
+                    //           textAlign: TextAlign.center,softWrap: true,)
+                    //         ],
+                    //       ),),
+                    //       )),
+                    //   ],
+                    // )),
+                    Stack(
+                    children: [
+                      ClipRRect(borderRadius: BorderRadius.circular(12),
+                      child: BackdropFilter(filter: ImageFilter.blur(
+                        sigmaX: 5,
+                        sigmaY: 5,
+                      ),
+                      blendMode: BlendMode.modulate,
+                      child: Container( margin: const EdgeInsets.only(bottom: 6),
+                        height: 110,
+                        decoration:   BoxDecoration(
+                           color: const Color.fromARGB(108, 255, 255, 255),
+                           boxShadow: const [BoxShadow(
+                        color: Color.fromARGB(255, 255, 250, 250),
+                        offset: Offset(0.0, 1.0), //(x,y)
+                        blurRadius: 6.0,
+                      ),
+                      ],
+                       borderRadius: BorderRadius.circular(12),
+                     ),
+                    ))),
+
+                       Padding(
+                         padding: const EdgeInsets.all(8.0),
+                         child: SizedBox(height: 100,width: MediaQuery.of(context).size.width,
+                          child:   Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Row(
+                                children: [
+                                  Flexible(child: Card(child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text('aaa',style: GoogleFonts.rubik(color: MinitoeColortheme.fontcolor,fontSize: 15),),
+                                  ))),
+                                  Text('-',style: GoogleFonts.rubik( fontSize: 15)),
+                                  Text('Language Introduction',style: GoogleFonts.rubik( fontSize: 15))
+                                ],
+                              ),
+                               Row(
+                                 children: [
+                                   Flexible(child: Card(child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text('aaa',style: GoogleFonts.rubik(color: MinitoeColortheme.fontcolor,fontSize: 15),),
+                                  ))),
+                                  Text('-',style: GoogleFonts.rubik( fontSize: 15)),
+                                  Text('Letters  A to F',style: GoogleFonts.rubik( fontSize: 15))
+                                 ],
+                               ),
+                            ],
+                          ),
+                         ),
+                       ),
 
 
-                    // ])
+                  ]
+                ),
                     
                  
                   

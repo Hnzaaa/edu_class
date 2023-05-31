@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:edu_minitoe/consts/colors.dart';
 import 'package:edu_minitoe/screens/drawer.dart';
 import 'package:edu_minitoe/screens/home.dart';
@@ -25,6 +27,7 @@ class _TimetablePageState extends State<TimetablePage> {
 
   bool showSelectedLabels = true;
   bool showUnselectedLabels = true;
+  bool isChecked = false;
 
   Color selectedColor = const Color.fromARGB(255, 228, 138, 198);
   @override
@@ -34,9 +37,19 @@ class _TimetablePageState extends State<TimetablePage> {
 
   @override
   Widget build(BuildContext context) {
-    
+    Color getColor(Set<MaterialState> states) {
+      const Set<MaterialState> interactiveStates = <MaterialState>{
+        MaterialState.pressed,
+        MaterialState.hovered,
+        MaterialState.focused,
+      };
+      if (states.any(interactiveStates.contains)) {
+        return Colors.blue;
+      }
+      return Colors.red;
+    }
     return Scaffold(
-      drawer:   DrawerPage(),
+      drawer:   const DrawerPage(),
     body:SizedBox(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
@@ -66,7 +79,7 @@ class _TimetablePageState extends State<TimetablePage> {
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>const HomePage()));
                       },
                         child: const Icon(Icons.arrow_back)),
-                        SizedBox(width: 10,),
+                        const SizedBox(width: 10,),
                         Hero(tag: 'tag',
                         child: Image.asset('assets/cropped-mintie-png.png',height: 60,)),
                       ],
@@ -116,7 +129,94 @@ class _TimetablePageState extends State<TimetablePage> {
                   ),
                   // const SizedBox(height: 20,),
                   Text('Timetable',style: GoogleFonts.rubik(color: MinitoeColortheme.fontcolor,
-                  fontSize: 20,fontWeight: FontWeight.bold),)
+                  fontSize: 20,fontWeight: FontWeight.bold),),
+
+                  Stack(
+                    children: [
+                      ClipRRect(borderRadius: BorderRadius.circular(12),
+                      child: BackdropFilter(filter: ImageFilter.blur(
+                        sigmaX: 5,
+                        sigmaY: 5,
+                        // tileMode: TileMode.decal
+                      ),
+                      blendMode: BlendMode.modulate,
+                      child: Container( margin: const EdgeInsets.only(bottom: 6),
+                        height: 110,
+                        decoration:   BoxDecoration(
+                           color: const Color.fromARGB(108, 255, 255, 255),
+                           boxShadow: const [BoxShadow(
+                        color: Color.fromARGB(255, 255, 250, 250),
+                        offset: Offset(0.0, 1.0), //(x,y)
+                        blurRadius: 6.0,
+                      ),
+                      ],
+                       borderRadius: BorderRadius.circular(12),
+                     ),
+                    ))),
+
+                     Padding(
+                     padding: const EdgeInsets.all(8.0),
+                     child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                     crossAxisAlignment: CrossAxisAlignment.center,
+                       children: [
+                         Flexible(
+                            child: Row(mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                      Flexible(
+                        child: Stack(
+                          children:[Container(
+                            height:  MediaQuery.of(context).size.width/4,width: MediaQuery.of(context).size.width/4,
+                            decoration:   BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(9)),),
+                            Container(height:  MediaQuery.of(context).size.width/4,width: MediaQuery.of(context).size.width/4,
+                              child: Row(mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Text('10:00-11:00',style: GoogleFonts.rubik(color: Colors.pink),),
+                                  SizedBox(width: 5,),
+                                  Flexible(
+                                    child: Container(height: MediaQuery.of(context).size.height/8,
+                                    width: MediaQuery.of(context).size.width/50,
+                                      decoration: BoxDecoration(color: Colors.pink),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                            ] 
+                        ),
+                      ),
+                      const SizedBox(width: 15,),
+                      Flexible(
+                        child: Container(height: MediaQuery.of(context).size.width/4,
+                          child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Subject',style: GoogleFonts.rubik(fontSize: 20,fontWeight: FontWeight.bold,
+                              color: MinitoeColortheme.fontcolor),),
+                              Text('Class',style: GoogleFonts.rubik(fontSize: 15,color: MinitoeColortheme.fontcolor),),
+                              Text('Section',style: GoogleFonts.rubik(fontSize: 15,color: MinitoeColortheme.fontcolor),),
+                              Text('Room',style: GoogleFonts.rubik(fontSize: 15,color: MinitoeColortheme.fontcolor),),
+                            ],
+                          ),
+                        ),
+                      ),
+                     ],),
+                   ),
+                   Checkbox(
+                      checkColor: Colors.white,
+                      fillColor: MaterialStateProperty.resolveWith(getColor),
+                      value: isChecked,
+                      onChanged: (bool? value) {
+                        setState(() {
+                          isChecked = value!;
+                        });
+                      },
+                    ),
+                   ],
+                 ),
+                 ),
+                  ]
+                ),
                
                 
                 ],

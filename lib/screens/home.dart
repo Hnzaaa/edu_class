@@ -11,6 +11,10 @@ import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  //  final GlobalKey<NavigatorState> navigatorkey;
+  // final String tabItem;
+  // const HomePage({Key? key,required this.navigatorkey,required this.tabItem}):super(key:key);
+
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -24,13 +28,17 @@ class _HomePageState extends State<HomePage> {
   SnakeBarBehaviour snakeBarStyle = SnakeBarBehaviour.floating;
   EdgeInsets padding = const EdgeInsets.all(12);
 
-  int _selectedItemPosition = 2;
+  int _selectedIndex = 2;
   SnakeShape snakeShape = SnakeShape.circle;
 
   bool showSelectedLabels = true;
   bool showUnselectedLabels = true;
 
   Color selectedColor = const Color.fromARGB(255, 228, 138, 198);
+
+ 
+
+    // SnakeNavigationBar({Key? key,required this.navigatorkey,required this.tabItem}):super(key:key);
   // Gradient selectedGradient =
   //     const LinearGradient(colors: [Colors.red, Colors.amber]);
   // Gradient unselectedGradient =
@@ -45,6 +53,12 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    // Widget child;
+
+    //  if(tabItem == "")
+    //  child = HomePage(navigatorkey: navigatorkey, tabItem: tabItem);
+    //  else if(tabItem =="")
+    //  child=ReportPage(key: ,);
     
     return Scaffold(
       drawer:   const DrawerPage(),
@@ -178,7 +192,8 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 Expanded(
-                  child: Column(mainAxisAlignment: MainAxisAlignment.start,
+                  child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                             Expanded(
                             child: Row(crossAxisAlignment: CrossAxisAlignment.start,
@@ -189,7 +204,8 @@ class _HomePageState extends State<HomePage> {
                                   child: InkWell(onTap: () {
                                     Navigator.push(context, MaterialPageRoute(builder: (context)=>const TimetablePage()));
                                   },
-                                  child: Container(height: 120,decoration: BoxDecoration(
+                                  child: Container(height: MediaQuery.of(context).size.height/4,
+                                  decoration: BoxDecoration(
                                     color: Colors.pinkAccent,borderRadius: BorderRadius.circular(19)),
                                     child: Column(mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
@@ -204,7 +220,8 @@ class _HomePageState extends State<HomePage> {
                                   child: InkWell(onTap: () {
                                     Navigator.push(context, MaterialPageRoute(builder: (context)=>const ReportPage()));
                                   },
-                                    child: Container(height: 120,decoration: BoxDecoration(color: Colors.blue,
+                                    child: Container(height: MediaQuery.of(context).size.height/4,
+                                    decoration: BoxDecoration(color: Colors.blue,
                                     borderRadius: BorderRadius.circular(19)),
                                     child: Column(mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
@@ -227,7 +244,8 @@ class _HomePageState extends State<HomePage> {
                                   child: InkWell(onTap: () {
                                     Navigator.push(context, MaterialPageRoute(builder: (context)=>const AttendencePage()));
                                     },
-                                    child: Container(height: 120,decoration: BoxDecoration(color: Colors.purple,
+                                    child: Container(height: MediaQuery.of(context).size.height/4,
+                                    decoration: BoxDecoration(color: Colors.purple,
                                       borderRadius: BorderRadius.circular(19)),
                                       child: Column(mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
@@ -242,7 +260,8 @@ class _HomePageState extends State<HomePage> {
                                   child: InkWell(onTap: () {
                                     Navigator.push(context, MaterialPageRoute(builder: (context)=>const OtpPage()));
                                   },
-                                    child: Container(height: 120,decoration: BoxDecoration(color: Colors.orange ,
+                                    child: Container(height: MediaQuery.of(context).size.height/4,
+                                    decoration: BoxDecoration(color: Colors.orange ,
                                     borderRadius: BorderRadius.circular(19)),
                                     child: Column(mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
@@ -268,6 +287,7 @@ class _HomePageState extends State<HomePage> {
         bottomNavigationBar: Container(height: 60,
         color: const Color.fromARGB(255, 9, 49, 95),
           child: SnakeNavigationBar.color(
+            
                 height: 50,
                 behaviour: snakeBarStyle,
                 snakeShape: snakeShape,
@@ -279,8 +299,8 @@ class _HomePageState extends State<HomePage> {
                   unselectedItemColor: Colors.white,
                   showUnselectedLabels: showUnselectedLabels,
                   showSelectedLabels: showSelectedLabels,
-                  currentIndex: _selectedItemPosition,
-                  onTap: (index) => setState(() => _selectedItemPosition = index),
+                  currentIndex: _selectedIndex,
+                  onTap: (index) => setState(() => _selectedIndex = index),
                   items:      [
             BottomNavigationBarItem(activeIcon: Container(height:20,width: 20 ,decoration:
                 const BoxDecoration(image: DecorationImage(image: AssetImage('assets/timetable.png'),

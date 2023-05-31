@@ -1,6 +1,4 @@
-
 import 'package:edu_minitoe/consts/colors.dart';
-import 'package:edu_minitoe/screens/home.dart';
 import 'package:flutter/material.dart';
 
 class NotificationPage extends StatefulWidget {
@@ -53,7 +51,7 @@ class _NotificationPageState extends State<NotificationPage> {
                     Flexible(child: Row(crossAxisAlignment: CrossAxisAlignment.start,mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       InkWell(onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>const HomePage()));
+                        Navigator.pop(context);
                       },
                       child: const Icon(Icons.arrow_back,size: 25,)),
                       const SizedBox(width: 15,),

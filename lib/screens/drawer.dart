@@ -1,4 +1,7 @@
 
+import 'package:edu_minitoe/screens/home.dart';
+import 'package:edu_minitoe/screens/report.dart';
+import 'package:edu_minitoe/screens/timetable.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -26,7 +29,7 @@ class _DrawerPageState extends State<DrawerPage> {
       child: 
         Drawer(
         width: 230,
-        backgroundColor: Colors.pinkAccent,
+        backgroundColor: const Color.fromARGB(255, 252, 123, 166),
         child: ListView(
         padding: EdgeInsets.zero,
         children:     <Widget>[
@@ -34,11 +37,11 @@ class _DrawerPageState extends State<DrawerPage> {
           child: DrawerHeader(margin: const EdgeInsets.all(0),
             decoration: const BoxDecoration(shape: BoxShape.rectangle,
             // borderRadius: BorderRadius(5) ,
-              color: Colors.pinkAccent,
+              color: Color.fromARGB(255, 252, 123, 166),
             ),
-            child: Column(
+            child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                CircleAvatar(radius: 85,backgroundColor: Colors.pink[200],
+                CircleAvatar(radius: 85,backgroundColor: Colors.pink[100],
                   child: const CircleAvatar(backgroundColor: Colors.pinkAccent,radius: 75,
                   ),
                 ),
@@ -49,21 +52,42 @@ class _DrawerPageState extends State<DrawerPage> {
             )
           ),
         ),
-        const ListTile(
-          leading: Icon(Icons.home),
+          ListTile(
+          leading: Icon(Icons.home,color: Colors.white,),
           title: Text('Home',style: TextStyle(color: Colors.white,fontSize: 20),),
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
+          },
         ),
-        const ListTile(
-          leading: Icon(Icons.calendar_month),
+          ListTile(
+          leading: Container(height:30,width: 30 ,decoration:
+                const BoxDecoration(image: DecorationImage(image: AssetImage('assets/timetable.png'),
+                ),),
+                ),
           title: Text('Timetable',style: TextStyle(color: Colors.white,fontSize: 20),),
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>TimetablePage()));
+          },
         ),
-        const ListTile(
-          leading: Icon(Icons.class_),
+          ListTile(
+          leading: Container(height:35,width: 35 ,decoration:
+                const BoxDecoration(image: DecorationImage(image: AssetImage('assets/classes.png'),
+                ),),
+                ),
           title: Text('Classes',style: TextStyle(color: Colors.white,fontSize: 20),),
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
+          },
         ),
-        const ListTile(
-          leading: Icon(Icons.report),
+          ListTile(
+          leading: Container(height:35,width: 35 ,decoration:
+                const BoxDecoration(image: DecorationImage(image: AssetImage('assets/report.png'),
+                ),),
+                ),
           title: Text('Reports',style: TextStyle(color: Colors.white,fontSize: 20),),
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>ReportPage()));
+          },
         ),
       ],
      ),
