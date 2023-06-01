@@ -1,5 +1,6 @@
  
-import 'package:edu_minitoe/screens/attendence.dart';
+import 'package:edu_minitoe/consts/colors.dart';
+import 'package:edu_minitoe/screens/attendance.dart';
 import 'package:edu_minitoe/screens/drawer.dart';
 import 'package:edu_minitoe/screens/login.dart';
 import 'package:edu_minitoe/screens/notifications.dart';
@@ -7,6 +8,8 @@ import 'package:edu_minitoe/screens/report.dart';
 import 'package:edu_minitoe/screens/timetable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -133,24 +136,41 @@ class _HomePageState extends State<HomePage> {
                 Expanded(
                   child: Row(crossAxisAlignment: CrossAxisAlignment.start,
                     // mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween ,
+                    mainAxisAlignment: MainAxisAlignment.start ,
                     children: [
                      // Generated code for this CircleImage Widget...
-                     Expanded(
-                       child:   Padding(
-                         padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
-                         child: Container(
-                           width: MediaQuery.of(context).size.height/2,
-                           height: MediaQuery.of(context).size.width/2,
-                           clipBehavior: Clip.antiAlias,
-                           decoration: const BoxDecoration(
-                       color: Colors.white,
-                             shape: BoxShape.circle,
+                     Flexible(
+                       child: Column(mainAxisAlignment: MainAxisAlignment.start,
+                         children: [
+                           Flexible(
+                             child:   Padding(
+                               padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                               child: Container(
+                                 width: MediaQuery.of(context).size.height/2,
+                                 height: MediaQuery.of(context).size.width/2,
+                                 clipBehavior: Clip.antiAlias,
+                                 decoration: const BoxDecoration(
+                             color: Colors.white,
+                                   shape: BoxShape.circle,
+                                 ),
+                                 child: CircularPercentIndicator(
+                                  startAngle: 300,
+                                  animation: true,
+                                  animationDuration: 800,
+                                   radius: 60.0,
+                                   backgroundColor: Colors.transparent,
+                                   lineWidth: 30.0,
+                                   percent: .45,
+                                   center:   Text("45%",style: GoogleFonts.rubik(color: MinitoeColortheme.fontcolor,
+                                   fontWeight: FontWeight.normal,fontSize: 20),),
+                                   progressColor: Colors.orange,
+                                 )
+                               ),
+                             ),
                            ),
-                           child: Image.asset(
-                             'assets/report.png',
-                           ),
-                         ),
+                           Text('Portions',style: GoogleFonts.rubik(color: MinitoeColortheme.fontcolor,fontSize: 20,
+                           fontWeight: FontWeight.normal),)
+                         ],
                        ),
                      ),
                      
@@ -171,23 +191,40 @@ class _HomePageState extends State<HomePage> {
 
 
                       const SizedBox(width: 10,),
-                      Expanded(
-                       child: Padding(
-                         padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
-                         child: Container(
-                           width: MediaQuery.of(context).size.height/2,
-                           height: MediaQuery.of(context).size.width/2,
-                           clipBehavior: Clip.antiAlias,
-                           decoration: const BoxDecoration(
-                             color: Colors.white,
-                             shape: BoxShape.circle,
-                           ),
-                           child: Image.asset(
-                             'assets/report.png',
-                           ),
-                         ),
-                       ),
-                     ),
+                      Flexible(
+                        child: Column(mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Flexible(
+                             child: Padding(
+                               padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                               child: Container(
+                                 width: MediaQuery.of(context).size.height/2,
+                                 height: MediaQuery.of(context).size.width/2,
+                                 clipBehavior: Clip.antiAlias,
+                                 decoration: const BoxDecoration(
+                                   color: Colors.white,
+                                   shape: BoxShape.circle,
+                                 ),
+                                 child:   CircularPercentIndicator(
+                                  animation: true,
+                                  animationDuration: 800,
+                                  startAngle: 150,
+                                   radius: 60.0,
+                                   lineWidth: 30.0,
+                                   backgroundColor: Colors.white,
+                                   percent: .78,
+                                   center:   Text("78%",style: GoogleFonts.rubik(color: MinitoeColortheme.fontcolor,
+                                   fontWeight: FontWeight.normal,fontSize: 20),),
+                                   progressColor: Colors.pink,
+                                 )
+                               ),
+                             ),
+                               ),
+                               Text('Attendance',style: GoogleFonts.rubik(color: MinitoeColortheme.fontcolor,fontSize: 20,
+                           fontWeight: FontWeight.normal))
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -251,7 +288,7 @@ class _HomePageState extends State<HomePage> {
                                     children: [
                                       Image.asset('assets/attendence.png',),
                                       const SizedBox(height: 10,),
-                                      const Text('Attendence',style: TextStyle(color: Colors.white),)
+                                      const Text('Attendance',style: TextStyle(color: Colors.white),)
                                     ],
                                 ),),
                                   )),
@@ -328,7 +365,7 @@ class _HomePageState extends State<HomePage> {
                 const BoxDecoration(image: DecorationImage(image: AssetImage('assets/attendence.png'),
                 ),),
                 ),
-            label: 'Attendence'),
+            label: 'Attendance'),
             BottomNavigationBarItem(activeIcon:  Container(height:20,width: 20 ,decoration:
                 const BoxDecoration(image: DecorationImage(image: AssetImage('assets/report.png'),
                 ),),

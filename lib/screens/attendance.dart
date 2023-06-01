@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:toggle_switch/toggle_switch.dart';
 
 class AttendencePage extends StatefulWidget {
   const AttendencePage({super.key});
@@ -137,8 +138,8 @@ class _AttendencePageState extends State<AttendencePage> {
                     padding: const EdgeInsets.only(left: 10,right: 10),
                     child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(width: 160,
-                             padding: const EdgeInsets.all(15),
+                        Container(width: MediaQuery.of(context).size.height / 4,
+                             padding: const EdgeInsets.all(10),
                              height: MediaQuery.of(context).size.width / 3,
                              child: Center(
                                  child: TextField(
@@ -146,7 +147,7 @@ class _AttendencePageState extends State<AttendencePage> {
                                //editing controller of this TextField
                                decoration: InputDecoration(filled: true,fillColor: Colors.white,isDense: true,
                                border: OutlineInputBorder(borderRadius: BorderRadius.circular(10),),
-                                   icon: const Icon(Icons.calendar_today,color: Colors.pink,), //icon of text field
+                                   icon:   Icon(Icons.calendar_today,color: Colors.pink,), //icon of text field
                                    // labelText: "Enter Date"
                                    ),
                                readOnly: true,
@@ -163,7 +164,7 @@ class _AttendencePageState extends State<AttendencePage> {
                                    print(
                                        pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
                                    String formattedDate =
-                                       DateFormat('dd-MM-yyyy').format(pickedDate);
+                                       DateFormat('EEE,dd-MM-yyyy').format(pickedDate);
                                    print(
                                        formattedDate); //formatted date output using intl package =>  2021-03-16
                                    setState(() {
@@ -173,19 +174,19 @@ class _AttendencePageState extends State<AttendencePage> {
                                },
                              ))),
                              Flexible(
-                              child: Container(width: MediaQuery.of(context).size.height/7,
+                              child: SizedBox(width: MediaQuery.of(context).size.height/7,
                                 height: MediaQuery.of(context).size.width / 5,
                                   // color: Colors.white,
                                   child: Column(
                                     children: [
                                       Text('Total Students',style: GoogleFonts.rubik(fontSize: 15),),
-                                      const Expanded(child: Row(
+                                        Expanded(child: Row(
                                         children: [
-                                          Text('20'),
+                                          Text('20',style: GoogleFonts.rubik(color: Colors.black,fontSize: 15),),
                                           Icon(Icons.boy),
-                                          Text('-10'),
+                                          Text('-10',style: GoogleFonts.rubik(color: Colors.blue,fontSize: 15),),
                                           Icon(Icons.girl),
-                                          Text('-10')
+                                          Text('-10',style: GoogleFonts.rubik(color: Colors.pink,fontSize: 15),)
                                         ],
                                       ))
                                     ],
@@ -194,6 +195,27 @@ class _AttendencePageState extends State<AttendencePage> {
                     ),
                   ),
                 ),
+                Card(
+                      color: Colors.purple,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Wrap(
+                        children: [
+                          Container(height:  MediaQuery.of(context).size.width/8,
+                                width: MediaQuery.of(context).size.width/8,
+                            decoration: const BoxDecoration(
+                                color: Colors.purple,
+                                borderRadius: BorderRadius.only(
+                                    bottomRight: Radius.circular(10),
+                                    topRight: Radius.circular(10))),
+                            margin: const EdgeInsets.only(right: 10),
+                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                            child: Text('A',style: GoogleFonts.rubik(color: Colors.white),),
+                          )
+                        ],
+                      ),
+                     ),
                 ClipRRect(
                 child: BackdropFilter(filter: ImageFilter.blur(
                   sigmaX: 1,
@@ -237,12 +259,32 @@ class _AttendencePageState extends State<AttendencePage> {
                     ),
                   ],),
                 ),
-                const Flexible(child: Row(
+                  Flexible(child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                     Text('Present'),
-                     Text('Absent')
+                     ToggleSwitch(
+                      animate: true,
+                      animationDuration: 300,
+                      // borderColor: [Color.fromARGB(255, 119, 152, 59), Color.fromARGB(255, 139, 195, 148), 
+                      //Color.fromARGB(255, 255, 196, 0),Color.fromARGB(255, 242, 117, 0), 
+                      //Color.fromARGB(255, 191, 76, 47), Color.fromARGB(255, 213, 79, 79)],
+                         minWidth: 70.0,
+                         dividerColor: Colors.black,
+                         cornerRadius: 10.0,
+                         activeBgColors: const [[Color.fromARGB(255, 110, 226, 110), Color.fromARGB(255, 53, 153, 40)], 
+                               [Color.fromARGB(255, 189, 33, 33), Color.fromARGB(255, 224, 163, 163)]],
+                         activeFgColor: Colors.white,
+                         inactiveBgColor: Colors.grey,
+                         inactiveFgColor: Colors.white,
+                         initialLabelIndex: 0,
+                         totalSwitches: 2,
+                         labels: const ['Present', 'Absent'],
+                         radiusStyle: false,
+                         onToggle: (index) {
+                           print('switched to: $index');
+                         },
+                       ),
                   ],
                 ))
               ],
@@ -298,7 +340,7 @@ class _AttendencePageState extends State<AttendencePage> {
                 const BoxDecoration(image: DecorationImage(image: AssetImage('assets/attendence.png'),
                 ),),
                 ),
-            label: 'Attendence'),
+            label: 'Attendance'),
             BottomNavigationBarItem(activeIcon:  Container(height:20,width: 20 ,decoration:
                 const BoxDecoration(image: DecorationImage(image: AssetImage('assets/report.png'),
                 ),),

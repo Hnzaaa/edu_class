@@ -40,6 +40,8 @@ class _OtpPageState extends State<OtpPage> {
             Padding(
               padding: const EdgeInsets.only(top: 500),
               child: Image.asset('assets/teacherkids.png',
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
               colorBlendMode: BlendMode.dstATop,
                  color: Colors.white.withOpacity(.15),
                     filterQuality: FilterQuality.low,),

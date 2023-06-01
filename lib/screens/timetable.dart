@@ -4,6 +4,7 @@ import 'package:edu_minitoe/consts/colors.dart';
 import 'package:edu_minitoe/screens/drawer.dart';
 import 'package:edu_minitoe/screens/home.dart';
 import 'package:edu_minitoe/screens/notifications.dart';
+import 'package:edu_minitoe/screens/timtabletabs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -28,8 +29,14 @@ class _TimetablePageState extends State<TimetablePage> {
   bool showSelectedLabels = true;
   bool showUnselectedLabels = true;
   bool isChecked = false;
+  int index=0;
+
+    
 
   Color selectedColor = const Color.fromARGB(255, 228, 138, 198);
+
+  final DefaultTabController _tabController=  const DefaultTabController(length: 1, 
+               child: TabsPage());
   @override
   void initState(){
     super.initState();
@@ -68,7 +75,7 @@ class _TimetablePageState extends State<TimetablePage> {
                             fit: BoxFit.cover,
                           )),
                   ),
-
+    
             Padding(
               padding: const EdgeInsets.all(18.0),
               child: Column(crossAxisAlignment: CrossAxisAlignment.start,
@@ -130,7 +137,58 @@ class _TimetablePageState extends State<TimetablePage> {
                   // const SizedBox(height: 20,),
                   Text('Timetable',style: GoogleFonts.rubik(color: MinitoeColortheme.fontcolor,
                   fontSize: 20,fontWeight: FontWeight.bold),),
-
+                  const SizedBox(height: 10,),
+    
+                  // Builder(
+                  //    builder: (context) {
+                  //      return Row(
+                  //        children: [
+                  //          IconButton(
+                  //            icon: const Icon(Icons.arrow_back_ios),
+                  //            onPressed: (){
+                  //              if(_tabController.index > 0){
+                  //                _tabController.animateTo(_tabController.index - 1,
+                  //                duration: Duration(milliseconds: 500), curve: Curves.ease);
+                  //              }else{
+                  //                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Can't go back"),));
+                  //              }
+                  //            },
+                  //          ),
+                  //          Expanded(
+                  //            child: TabBar(
+                  //              isScrollable: true,
+                  //              controller: _tabController,
+                  //              labelStyle: const TextStyle(
+                  //                color: Colors.black
+                  //              ),
+                  //              unselectedLabelColor: Colors.black,
+                  //              labelColor: Colors.blue,
+                  //              tabs: List.generate(20,(index)
+                  //               {
+                  //                  return Tab(
+                  //                    text: "Tab $index",
+                  //                  );
+                  //                },
+                  //              ),
+                  //            ),
+                  //          ),
+                  //          IconButton(
+                  //            icon: const Icon(Icons.arrow_forward_ios),
+                  //            onPressed: (){
+                  //              if(_tabController.index+1 < 20){
+                  //                _tabController.animateTo(_tabController.index + 1,
+                  //                duration: Duration(milliseconds: 500), curve: Curves.ease);
+                  //              }else{
+                  //                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Can't move forward"),));
+                  //              }
+                  //            },
+                  //          ),
+                  //        ],
+                  //      );
+                  //    }
+                  //  ),
+    
+                  const SizedBox(height: 10,),
                   Stack(
                     children: [
                       ClipRRect(borderRadius: BorderRadius.circular(12),
@@ -153,7 +211,7 @@ class _TimetablePageState extends State<TimetablePage> {
                        borderRadius: BorderRadius.circular(12),
                      ),
                     ))),
-
+    
                      Padding(
                      padding: const EdgeInsets.all(8.0),
                      child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -163,31 +221,32 @@ class _TimetablePageState extends State<TimetablePage> {
                             child: Row(mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                      Flexible(
-                        child: Stack(
-                          children:[Container(
-                            height:  MediaQuery.of(context).size.width/4,width: MediaQuery.of(context).size.width/4,
-                            decoration:   BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(9)),),
-                            Container(height:  MediaQuery.of(context).size.width/4,width: MediaQuery.of(context).size.width/4,
-                              child: Row(mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Text('10:00-11:00',style: GoogleFonts.rubik(color: Colors.pink),),
-                                  SizedBox(width: 5,),
-                                  Flexible(
-                                    child: Container(height: MediaQuery.of(context).size.height/8,
-                                    width: MediaQuery.of(context).size.width/50,
-                                      decoration: BoxDecoration(color: Colors.pink),
-                                    ),
-                                  )
-                                ],
-                              ),
+                      
+                          Card(
+                            color: Colors.red,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
                             ),
-                            ] 
-                        ),
-                      ),
-                      const SizedBox(width: 15,),
+                            child: Wrap(
+                              children: [
+                                Container(height:  MediaQuery.of(context).size.width/4,
+                                      width: MediaQuery.of(context).size.width/4,
+                                  decoration: const BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(10),
+                                          topLeft: Radius.circular(10))),
+                                  margin: const EdgeInsets.only(right: 10),
+                                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 35),
+                                  child: Text('10:00-11:00',style: GoogleFonts.rubik(color: Colors.pink),),
+                                )
+                              ],
+                            ),
+                          ),
+                      const SizedBox(width: 10,),
                       Flexible(
-                        child: Container(height: MediaQuery.of(context).size.width/4,
+                        child: Container(height:  MediaQuery.of(context).size.width/4,
+                                      width: MediaQuery.of(context).size.width/4,
                           child: Column(mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -203,6 +262,8 @@ class _TimetablePageState extends State<TimetablePage> {
                      ],),
                    ),
                    Checkbox(
+                    side: const BorderSide(color: Colors.grey,width: 1),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
                       checkColor: Colors.white,
                       fillColor: MaterialStateProperty.resolveWith(getColor),
                       value: isChecked,
@@ -215,6 +276,8 @@ class _TimetablePageState extends State<TimetablePage> {
                    ],
                  ),
                  ),
+    
+    
                   ]
                 ),
                
@@ -226,7 +289,7 @@ class _TimetablePageState extends State<TimetablePage> {
         ),
       ),
         
-
+    
         bottomNavigationBar: Container(height: 60,
         color: const Color.fromARGB(255, 9, 49, 95),
           child: SnakeNavigationBar.color(
@@ -270,7 +333,7 @@ class _TimetablePageState extends State<TimetablePage> {
                 const BoxDecoration(image: DecorationImage(image: AssetImage('assets/attendence.png'),
                 ),),
                 ),
-            label: 'Attendence'),
+            label: 'Attendance'),
             BottomNavigationBarItem(activeIcon:  Container(height:20,width: 20 ,decoration:
                 const BoxDecoration(image: DecorationImage(image: AssetImage('assets/report.png'),
                 ),),

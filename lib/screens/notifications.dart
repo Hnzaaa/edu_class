@@ -60,9 +60,23 @@ class _NotificationPageState extends State<NotificationPage> {
                     ],
                   )),
                   const SizedBox(height: 10,),
-                  Flexible(child: Container(height: MediaQuery.of(context).size.height,
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
-                      color: Colors.pink[100]),)),
+                  Stack(
+                    children: [Card(shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50)),
+                      color: const Color.fromARGB(255, 83, 15, 95),
+                    child: Container(
+                      height: MediaQuery.of(context).size.height/4,
+                      width: MediaQuery.of(context).size.height/5,
+                      decoration: BoxDecoration(color: Color.fromARGB(255, 83, 15, 95),
+                      borderRadius: BorderRadius.circular(10)),
+                    ),),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 40),
+                        child: Container(height: MediaQuery.of(context).size.height/4,
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
+                          color: const Color.fromARGB(255, 250, 222, 232)),),
+                      ),]
+                  ),
                 ],
               ),
             )

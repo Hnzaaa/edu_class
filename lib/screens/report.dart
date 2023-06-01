@@ -3,8 +3,8 @@ import 'dart:ui';
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:edu_minitoe/consts/colors.dart';
 import 'package:edu_minitoe/screens/drawer.dart';
-import 'package:edu_minitoe/screens/home.dart';
 import 'package:edu_minitoe/screens/notifications.dart';
+import 'package:edu_minitoe/screens/reportdetail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -78,7 +78,7 @@ class _ReportPageState extends State<ReportPage> {
                   children: [Flexible(
                       child: Row(
                         children: [InkWell(onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>const HomePage()));
+                          Navigator.pop(context);
                         },
                           child: const Icon(Icons.arrow_back)),
                           const SizedBox(width: 10,),
@@ -318,32 +318,37 @@ class _ReportPageState extends State<ReportPage> {
 
                        Padding(
                          padding: const EdgeInsets.all(8.0),
-                         child: SizedBox(height: 100,width: MediaQuery.of(context).size.width,
-                          child:   Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Row(
-                                children: [
-                                  Flexible(child: Card(child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text('aaa',style: GoogleFonts.rubik(color: MinitoeColortheme.fontcolor,fontSize: 15),),
-                                  ))),
-                                  Text('-',style: GoogleFonts.rubik( fontSize: 15)),
-                                  Text('Language Introduction',style: GoogleFonts.rubik( fontSize: 15))
-                                ],
-                              ),
-                               Row(
-                                 children: [
-                                   Flexible(child: Card(child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text('aaa',style: GoogleFonts.rubik(color: MinitoeColortheme.fontcolor,fontSize: 15),),
-                                  ))),
-                                  Text('-',style: GoogleFonts.rubik( fontSize: 15)),
-                                  Text('Letters  A to F',style: GoogleFonts.rubik( fontSize: 15))
-                                 ],
-                               ),
-                            ],
-                          ),
+                         child: InkWell(onTap: () {
+                           Navigator.push(context, MaterialPageRoute(builder: (context)=>const ReportDetailPage()));
+                         },
+                           child: SizedBox(height: 100,width: MediaQuery.of(context).size.width,
+                            child:   Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Row( 
+                                  children: [
+                                    Flexible(child: Card(child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text('L3',style: GoogleFonts.rubik(color: MinitoeColortheme.fontcolor,
+                                      fontSize: 15),),
+                                    ))),
+                                    Text('-',style: GoogleFonts.rubik( fontSize: 15)),
+                                    Text('Language Introduction',style: GoogleFonts.rubik( fontSize: 15))
+                                  ],
+                                ),
+                                 Row( 
+                                   children: [
+                                     Flexible(child: Card(child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text('Activity 1',style: GoogleFonts.rubik(color: MinitoeColortheme.fontcolor,fontSize: 15),),
+                                    ))),
+                                    Text('-',style: GoogleFonts.rubik( fontSize: 15)),
+                                    Text('Letters  A to F',style: GoogleFonts.rubik( fontSize: 15))
+                                   ],
+                                 ),
+                              ],
+                            ),
+                           ),
                          ),
                        ),
 
@@ -404,7 +409,7 @@ class _ReportPageState extends State<ReportPage> {
                   const BoxDecoration(image: DecorationImage(image: AssetImage('assets/attendence.png'),
                   ),),
                   ),
-              label: 'Attendence'),
+              label: 'Attendance'),
               BottomNavigationBarItem(activeIcon:  Container(height:20,width: 20 ,decoration:
                   const BoxDecoration(image: DecorationImage(image: AssetImage('assets/report.png'),
                   ),),
