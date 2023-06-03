@@ -122,20 +122,20 @@ class _HomePageState extends State<HomePage> {
                           // ),
                           // prefixIcon:
                         ),
-                                          ),
+                       ),
                       ),
                     const SizedBox(width: 11,),
                     IconButton(onPressed: (){
                       Navigator.push(context, MaterialPageRoute(builder: (context)=>const NotificationPage()));
                     },
-                      icon: const Icon(Icons.notifications_outlined)),
+                      icon: Badge(child: const Icon(Icons.notifications_outlined,
+                      ),)),
                   
                     ],
                   ),
                   const SizedBox(height: 20,),
                 Expanded(
                   child: Row(crossAxisAlignment: CrossAxisAlignment.start,
-                    // mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.start ,
                     children: [
                      // Generated code for this CircleImage Widget...

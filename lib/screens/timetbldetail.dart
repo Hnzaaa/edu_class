@@ -2,14 +2,14 @@ import 'package:edu_minitoe/consts/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class ReportDetailPage extends StatefulWidget {
-  const ReportDetailPage({super.key});
+class TimetblDetailPage extends StatefulWidget {
+  const TimetblDetailPage({super.key});
 
   @override
-  State<ReportDetailPage> createState() => _ReportDetailPageState();
+  State<TimetblDetailPage> createState() => _TimetblDetailPageState();
 }
 
-class _ReportDetailPageState extends State<ReportDetailPage> {
+class _TimetblDetailPageState extends State<TimetblDetailPage> {
   @override
   Widget build(BuildContext context) {
     
@@ -32,7 +32,7 @@ class _ReportDetailPageState extends State<ReportDetailPage> {
             Padding(
                 padding: const EdgeInsets.only(top: 18,right: 18,left: 18),
                 child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [SizedBox(height: 60,
+                  children: [Container(height: 60,
                     child: Row(
                       children: [InkWell(onTap: () {
                         Navigator.pop(context);
@@ -48,18 +48,27 @@ class _ReportDetailPageState extends State<ReportDetailPage> {
                       child: Column(crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Container(height: 90,width: MediaQuery.of(context).size.width,
-                          decoration:
+                          Container(height: 90,decoration:
                            BoxDecoration(color: MinitoeColortheme.darkpink,borderRadius: BorderRadius.circular(10)),
-                           child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                           child: Column(
                             children: [
                               Padding(
                                 padding: const EdgeInsets.only(top: 8),
-                                child: Text('Language Introduction',style: GoogleFonts.rubik(color: Colors.white,
+                                child: Text('Subject',style: GoogleFonts.rubik(color: Colors.white,
                                 fontSize: 20,fontWeight: FontWeight.bold)),
                               ),
-                              Text('Letters A to F',style: GoogleFonts.rubik(color: Colors.white,
-                                fontSize: 15,fontWeight: FontWeight.normal))
+                              Flexible(child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: [
+                                  Flexible(child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text('Class',style: GoogleFonts.rubik(color: Colors.white)),
+                                      Text('Section',style: GoogleFonts.rubik(color: Colors.white)),
+                                      Text('Room',style: GoogleFonts.rubik(color: Colors.white))
+                                    ],
+                                  )),
+                                  Text('Time',style: GoogleFonts.rubik(color: Colors.white))
+                                ],
+                              ))
                             ],
                            ),),
                              const SizedBox(height: 20,),
@@ -78,14 +87,12 @@ class _ReportDetailPageState extends State<ReportDetailPage> {
                 ),
               ),
               Padding(
-                padding:     const EdgeInsets.only(bottom: 30),
+                padding:     EdgeInsets.only(bottom: 30),
                 child: Align(alignment: Alignment.bottomCenter,
-                  child: SizedBox(height: 50,width: 160,
-                    child: ElevatedButton(onPressed: (){},
+                  child: Container(height: 50,width: 160,
+                    child: ElevatedButton(onPressed: (){}, child: const Text('Complete'),
                     style:   ElevatedButton.styleFrom(backgroundColor: MinitoeColortheme.darkpink,
-                    textStyle: GoogleFonts.rubik(color: Colors.white,fontSize: 18),
-                    elevation: 15,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))), 
-                    child:   const Text('Download PDF'),),
+                    elevation: 15,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),),
                   ),
                 ),
               )

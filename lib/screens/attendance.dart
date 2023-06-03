@@ -1,11 +1,13 @@
 import 'dart:ui';
 
+import 'package:custom_radio_grouped_button/custom_radio_grouped_button.dart';
 import 'package:edu_minitoe/consts/colors.dart';
 import 'package:edu_minitoe/screens/drawer.dart';
 import 'package:edu_minitoe/screens/home.dart';
 import 'package:edu_minitoe/screens/notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
+import 'package:glassmorphism/glassmorphism.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:toggle_switch/toggle_switch.dart';
@@ -122,7 +124,8 @@ class _AttendencePageState extends State<AttendencePage> {
                     IconButton(onPressed: (){
                       Navigator.push(context, MaterialPageRoute(builder: (context)=>const NotificationPage()));
                     },
-                      icon: const Icon(Icons.notifications_outlined)),
+                      icon: const Badge(child: Icon(Icons.notifications_outlined,
+                      ),)),
                   
                     ],
                   ),
@@ -147,7 +150,10 @@ class _AttendencePageState extends State<AttendencePage> {
                                //editing controller of this TextField
                                decoration: InputDecoration(filled: true,fillColor: Colors.white,isDense: true,
                                border: OutlineInputBorder(borderRadius: BorderRadius.circular(10),),
-                                   icon:   Icon(Icons.calendar_today,color: Colors.pink,), //icon of text field
+                                   icon:   Container(height:40,width: 40 ,decoration:
+                                     const BoxDecoration(image: DecorationImage(image: AssetImage('assets/calender.png'),
+                                     ),),
+                                     ),
                                    // labelText: "Enter Date"
                                    ),
                                readOnly: true,
@@ -164,7 +170,7 @@ class _AttendencePageState extends State<AttendencePage> {
                                    print(
                                        pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
                                    String formattedDate =
-                                       DateFormat('EEE,dd-MM-yyyy').format(pickedDate);
+                                       DateFormat('dd-MM-yyyy').format(pickedDate);
                                    print(
                                        formattedDate); //formatted date output using intl package =>  2021-03-16
                                    setState(() {
@@ -183,9 +189,9 @@ class _AttendencePageState extends State<AttendencePage> {
                                         Expanded(child: Row(
                                         children: [
                                           Text('20',style: GoogleFonts.rubik(color: Colors.black,fontSize: 15),),
-                                          Icon(Icons.boy),
+                                          const Icon(Icons.boy),
                                           Text('-10',style: GoogleFonts.rubik(color: Colors.blue,fontSize: 15),),
-                                          Icon(Icons.girl),
+                                          const Icon(Icons.girl),
                                           Text('-10',style: GoogleFonts.rubik(color: Colors.pink,fontSize: 15),)
                                         ],
                                       ))
@@ -216,80 +222,170 @@ class _AttendencePageState extends State<AttendencePage> {
                         ],
                       ),
                      ),
-                ClipRRect(
-                child: BackdropFilter(filter: ImageFilter.blur(
-                  sigmaX: 1,
-                  sigmaY: 1,
-                  // tileMode: TileMode.decal
-                ),
-                blendMode: BlendMode.modulate,
-                child: Container( margin: const EdgeInsets.only(bottom: 6),
+                GlassmorphicContainer(
+                  blur: 5,
+                  border: 1,
+                  borderGradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        const Color(0xFFffffff).withOpacity(0.5),
+                        const Color((0xFFFFFFFF)).withOpacity(0.5),
+                      ],
+                    ),
+                  borderRadius: 1,
                   height: 110,
-                  decoration: const BoxDecoration(
-                     color: Color.fromARGB(108, 255, 255, 255),
-                     boxShadow: [
-                BoxShadow(
-                  color: Color.fromARGB(255, 255, 250, 250),
-                  offset: Offset(0.0, 1.0), //(x,y)
-                  blurRadius: 6.0,
-                ),
-              ],
-                    // borderRadius: BorderRadius.circular(12),
-                  ),
-            child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Flexible(
-                  child: Row(mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                    const CircleAvatar(radius: 40,backgroundColor: Color.fromARGB(255, 247, 142, 177),),
-                    const SizedBox(width: 15,),
-                    Flexible(
-                      child: Container(height: MediaQuery.of(context).size.width/7,
-                        child: Column(mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('Name',style: GoogleFonts.rubik(fontSize: 20,fontWeight: FontWeight.bold),),
-                            Text('ID',style: GoogleFonts.rubik(fontSize: 15),),
-                            
-                          ],
+                  width: MediaQuery.of(context).size.width,
+                  linearGradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          const Color(0xFFffffff).withOpacity(0.1),
+                          const Color(0xFFFFFFFF).withOpacity(0.05),
+                        ],
+                        stops: [
+                          0.1,
+                          1,
+                        ]),
+                  child: Container( margin: const EdgeInsets.only(bottom: 6),
+                    height: 110,
+                            child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                  Flexible(
+                    child: Row(mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                      const CircleAvatar(radius: 40,backgroundColor: Color.fromARGB(255, 163, 50, 88),),
+                      const SizedBox(width: 15,),
+                      Flexible(
+                        child: Container(height: MediaQuery.of(context).size.width/7,
+                          child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Name',style: GoogleFonts.rubik(fontSize: 20,fontWeight: FontWeight.bold),),
+                              Text('ID',style: GoogleFonts.rubik(fontSize: 15),),
+                              
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  ],),
+                    ],),
+                  ),
+                    Flexible(child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                       ToggleSwitch(borderWidth: 9,
+                        animate: true,
+                        animationDuration: 300,
+                        // borderColor: [Color.fromARGB(255, 119, 152, 59), Color.fromARGB(255, 139, 195, 148), 
+                        //Color.fromARGB(255, 255, 196, 0),Color.fromARGB(255, 242, 117, 0), 
+                        //Color.fromARGB(255, 191, 76, 47), Color.fromARGB(255, 213, 79, 79)],
+                           minWidth: 70.0,
+                           dividerColor: Colors.black,
+                           cornerRadius: 10.0,
+                           activeBgColors: const [[Color.fromARGB(255, 65, 163, 65), Color.fromARGB(255, 19, 85, 10)], 
+                                 [Color.fromARGB(255, 209, 5, 5), Color.fromARGB(255, 197, 109, 109)]],
+                           activeFgColor: Colors.white,
+                           inactiveBgColor: const Color.fromARGB(255, 253, 186, 208),
+                           inactiveFgColor: Colors.black,
+                           initialLabelIndex: null,
+                           totalSwitches: 2,
+                           labels: const ['Present', 'Absent'],
+                           radiusStyle: false,
+                           onToggle: (index) {
+                             print('switched to: $index');
+                           },
+                         ),
+                    ],
+                  ))
+                              ],
+                            ),
+                            ),),
                 ),
-                  Flexible(child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                SizedBox(height: 15,),
+            GlassmorphicContainer(
+              blur: 5,
+                  border: 1,
+                  borderGradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        const Color(0xFFffffff).withOpacity(0.5),
+                        const Color((0xFFFFFFFF)).withOpacity(0.5),
+                      ],
+                    ),
+                  borderRadius: 1,
+                  height: 110,
+                  width: MediaQuery.of(context).size.width,
+                  linearGradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          const Color(0xFFffffff).withOpacity(0.1),
+                          const Color(0xFFFFFFFF).withOpacity(0.05),
+                        ],
+                        stops: [
+                          0.1,
+                          1,
+                        ]),
+              child: Container( margin: const EdgeInsets.only(bottom: 6),
+                height: 110,
+              child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+              Flexible(
+                child: Row(mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                     ToggleSwitch(
-                      animate: true,
-                      animationDuration: 300,
-                      // borderColor: [Color.fromARGB(255, 119, 152, 59), Color.fromARGB(255, 139, 195, 148), 
-                      //Color.fromARGB(255, 255, 196, 0),Color.fromARGB(255, 242, 117, 0), 
-                      //Color.fromARGB(255, 191, 76, 47), Color.fromARGB(255, 213, 79, 79)],
-                         minWidth: 70.0,
-                         dividerColor: Colors.black,
-                         cornerRadius: 10.0,
-                         activeBgColors: const [[Color.fromARGB(255, 110, 226, 110), Color.fromARGB(255, 53, 153, 40)], 
-                               [Color.fromARGB(255, 189, 33, 33), Color.fromARGB(255, 224, 163, 163)]],
-                         activeFgColor: Colors.white,
-                         inactiveBgColor: Colors.grey,
-                         inactiveFgColor: Colors.white,
-                         initialLabelIndex: 0,
-                         totalSwitches: 2,
-                         labels: const ['Present', 'Absent'],
-                         radiusStyle: false,
-                         onToggle: (index) {
-                           print('switched to: $index');
-                         },
-                       ),
-                  ],
-                ))
-              ],
+                  const CircleAvatar(radius: 40,backgroundColor: Color.fromARGB(255, 173, 83, 113),),
+                  const SizedBox(width: 15,),
+                  Flexible(
+                    child: Container(height: MediaQuery.of(context).size.width/7,
+                      child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Name',style: GoogleFonts.rubik(fontSize: 20,fontWeight: FontWeight.bold),),
+                          Text('ID',style: GoogleFonts.rubik(fontSize: 15),),
+                          
+                        ],
+                      ),
+                    ),
+                  ),
+                ],),
+              ),
+              CustomRadioButton(customShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+              enableButtonWrap: true,enableShape: true,
+                padding: 0,width: 80,
+                 elevation: 0,
+                //  absoluteZeroSpacing: true,
+                defaultSelected: null,
+                selectedBorderColor: Colors.black,
+                unSelectedBorderColor: Colors.black,
+                 unSelectedColor: const Color.fromARGB(255, 255, 197, 217),
+                 buttonLables: const [
+                   'Present',
+                   'Absent',
+                 ],
+                 buttonValues: const [
+                   "PRESENT",
+                   "ABSENT",
+                 ],
+                 
+                 buttonTextStyle: const ButtonTextStyle(
+                     selectedColor: Colors.white,
+                     unSelectedColor: Colors.black,
+                     textStyle: TextStyle(fontSize: 13,)),
+                 radioButtonValue: (value) {
+                   print(value);
+                 },
+                 selectedColor: const Color.fromARGB(255, 21, 63, 22),
+              ),
+                ],
+              ),
+              ),),
             ),
-            ),))),
               ],
             )
           ],

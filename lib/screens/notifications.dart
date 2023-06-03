@@ -1,5 +1,6 @@
 import 'package:edu_minitoe/consts/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class NotificationPage extends StatefulWidget {
   const NotificationPage({super.key});
@@ -64,8 +65,11 @@ class _NotificationPageState extends State<NotificationPage> {
                     children: [Card(shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50)),
                       color: const Color.fromARGB(255, 83, 15, 95),
-                    child: Container(
-                      height: MediaQuery.of(context).size.height/4,
+                    child: Container(child: Padding(
+                      padding: const EdgeInsets.only(top: 8,left: 20),
+                      child: Text('Today',style: GoogleFonts.rubik(color: Colors.white,fontSize: 20),),
+                    ),
+                      height: MediaQuery.of(context).size.height/10,
                       width: MediaQuery.of(context).size.height/5,
                       decoration: BoxDecoration(color: Color.fromARGB(255, 83, 15, 95),
                       borderRadius: BorderRadius.circular(10)),
@@ -73,8 +77,20 @@ class _NotificationPageState extends State<NotificationPage> {
                       Padding(
                         padding: const EdgeInsets.only(top: 40),
                         child: Container(height: MediaQuery.of(context).size.height/4,
+                        width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
-                          color: const Color.fromARGB(255, 250, 222, 232)),),
+                          color: const Color.fromARGB(255, 250, 222, 232)),
+                          child: Padding(
+                            padding: const EdgeInsets.all(18.0),
+                            child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text('Heading'),
+                                Text('data'),
+                                Text('Time'),
+                                Divider(thickness: 2,color: Color.fromARGB(255, 204, 158, 173),)
+                              ],
+                            ),
+                          ),),
                       ),]
                   ),
                 ],

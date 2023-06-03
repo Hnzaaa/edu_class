@@ -5,5 +5,7 @@ class MinitoeColortheme {
   static const primaryappcolordarkpink = Color.fromARGB(255, 140, 4, 145);
   static const textbutton = Color.fromARGB(255, 236, 33, 101);
   static const fontcolor = Color.fromARGB(255, 12, 72, 121);
+  static const navbar = Color(0xfff343D6D);
+  static const darkpink = Color(0xfffFF747C);
   static const neww = Color(0xfff5013af);
 }

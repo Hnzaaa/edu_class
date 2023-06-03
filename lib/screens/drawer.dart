@@ -1,4 +1,5 @@
 
+import 'package:edu_minitoe/consts/colors.dart';
 import 'package:edu_minitoe/screens/home.dart';
 import 'package:edu_minitoe/screens/report.dart';
 import 'package:edu_minitoe/screens/timetable.dart';
@@ -29,7 +30,7 @@ class _DrawerPageState extends State<DrawerPage> {
       child: 
         Drawer(
         width: 230,
-        backgroundColor: const Color.fromARGB(255, 252, 123, 166),
+        backgroundColor: MinitoeColortheme.darkpink,
         child: ListView(
         padding: EdgeInsets.zero,
         children:     <Widget>[
@@ -37,7 +38,7 @@ class _DrawerPageState extends State<DrawerPage> {
           child: DrawerHeader(margin: const EdgeInsets.all(0),
             decoration: const BoxDecoration(shape: BoxShape.rectangle,
             // borderRadius: BorderRadius(5) ,
-              color: Color.fromARGB(255, 252, 123, 166),
+              color: MinitoeColortheme.darkpink,
             ),
             child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [

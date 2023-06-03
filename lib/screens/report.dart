@@ -7,6 +7,7 @@ import 'package:edu_minitoe/screens/notifications.dart';
 import 'package:edu_minitoe/screens/reportdetail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
+import 'package:glassmorphism/glassmorphism.dart';
 import 'package:google_fonts/google_fonts.dart';
 class ReportPage extends StatefulWidget {
   const ReportPage({super.key});
@@ -125,7 +126,8 @@ class _ReportPageState extends State<ReportPage> {
                       IconButton(onPressed: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>const NotificationPage()));
                       },
-                        icon: const Icon(Icons.notifications_outlined)),
+                        icon: Badge(child: const Icon(Icons.notifications_outlined,
+                      ),)),
                     
                       ],
                     ),
@@ -181,7 +183,7 @@ class _ReportPageState extends State<ReportPage> {
                                       borderWidth: 0,
                                       // backgroundColor: Colors.pink,
                                       // borderColor: Colors.transparent,
-                                      unselectedBackgroundColor: Colors.pink,
+                                      unselectedBackgroundColor: MinitoeColortheme.darkpink,
                                       center: true,
                                       decoration: const BoxDecoration(
                                         gradient: LinearGradient(
@@ -294,29 +296,37 @@ class _ReportPageState extends State<ReportPage> {
                     //       )),
                     //   ],
                     // )),
-                    Stack(
-                    children: [
-                      ClipRRect(borderRadius: BorderRadius.circular(12),
-                      child: BackdropFilter(filter: ImageFilter.blur(
-                        sigmaX: 5,
-                        sigmaY: 5,
-                      ),
-                      blendMode: BlendMode.modulate,
-                      child: Container( margin: const EdgeInsets.only(bottom: 6),
-                        height: 110,
-                        decoration:   BoxDecoration(
-                           color: const Color.fromARGB(108, 255, 255, 255),
-                           boxShadow: const [BoxShadow(
-                        color: Color.fromARGB(255, 255, 250, 250),
-                        offset: Offset(0.0, 1.0), //(x,y)
-                        blurRadius: 6.0,
-                      ),
-                      ],
-                       borderRadius: BorderRadius.circular(12),
-                     ),
-                    ))),
 
-                       Padding(
+
+
+                    GlassmorphicContainer(
+                  width: MediaQuery.of(context).size.width,
+                    height: 110,
+                    borderRadius: 20,
+                    blur: 5,
+                    alignment: Alignment.bottomCenter,
+                    border: 1,
+                    linearGradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          const Color(0xFFffffff).withOpacity(0.1),
+                          const Color(0xFFFFFFFF).withOpacity(0.05),
+                        ],
+                        stops: [
+                          0.1,
+                          1,
+                        ]),
+                    borderGradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        const Color(0xFFffffff).withOpacity(0.5),
+                        const Color((0xFFFFFFFF)).withOpacity(0.5),
+                      ],
+                    ),
+                    
+                    child: Padding(
                          padding: const EdgeInsets.all(8.0),
                          child: InkWell(onTap: () {
                            Navigator.push(context, MaterialPageRoute(builder: (context)=>const ReportDetailPage()));
@@ -325,10 +335,11 @@ class _ReportPageState extends State<ReportPage> {
                             child:   Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
                             crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Row( 
+                                Row(  
                                   children: [
-                                    Flexible(child: Card(child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
+                                    Flexible(child: Card(
+                                      child: Padding(
+                                      padding: const EdgeInsets.only(top: 8,bottom: 8,left: 25,right: 25),
                                       child: Text('L3',style: GoogleFonts.rubik(color: MinitoeColortheme.fontcolor,
                                       fontSize: 15),),
                                     ))),
@@ -336,7 +347,7 @@ class _ReportPageState extends State<ReportPage> {
                                     Text('Language Introduction',style: GoogleFonts.rubik( fontSize: 15))
                                   ],
                                 ),
-                                 Row( 
+                                 Row(  
                                    children: [
                                      Flexible(child: Card(child: Padding(
                                       padding: const EdgeInsets.all(8.0),
@@ -350,14 +361,27 @@ class _ReportPageState extends State<ReportPage> {
                             ),
                            ),
                          ),
-                       ),
-
-
-                  ]
-                ),
-                    
-                 
-                  
+                       ), ),
+               
+                //       ClipRRect(borderRadius: BorderRadius.circular(12),
+                //       child: BackdropFilter(filter: ImageFilter.blur(
+                //         sigmaX: 5,
+                //         sigmaY: 5,
+                //       ),
+                //       blendMode: BlendMode.modulate,
+                //       child: Container( margin: const EdgeInsets.only(bottom: 6),
+                //         height: 110,
+                //         decoration:   BoxDecoration(
+                //            color: const Color.fromARGB(108, 255, 255, 255),
+                //            boxShadow: const [BoxShadow(
+                //         color: Color.fromARGB(255, 255, 250, 250),
+                //         offset: Offset(0.0, 1.0), //(x,y)
+                //         blurRadius: 6.0,
+                //       ),
+                //       ],
+                //        borderRadius: BorderRadius.circular(12),
+                //      ),
+                //     ))),
                   ],
                 ),
               )

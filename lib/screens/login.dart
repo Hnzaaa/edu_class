@@ -74,7 +74,7 @@ class _OtpPageState extends State<OtpPage> {
                     const SizedBox(height: 20,),
                       Container(alignment: Alignment.topRight, 
                         child: InkWell(child: Text('send OTP',style: 
-                        GoogleFonts.rubik(color: MinitoeColortheme.textbutton),
+                        GoogleFonts.rubik(color: Colors.pink),
                         textAlign: TextAlign.right,),
                          
                         onTap: () { 
