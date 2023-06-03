@@ -138,7 +138,8 @@ class _ReportPageState extends State<ReportPage> {
                       child: Row(crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          DropdownButton<String>(underline: Container(
+                          DropdownButton<String>(
+                            underline: Container(
                                 height: 2,width: 500,
                                 color: Colors.grey,
                               ),
@@ -197,22 +198,49 @@ class _ReportPageState extends State<ReportPage> {
                                       unselectedLabelStyle: const TextStyle(color: Colors.white),
                                       labelStyle: const TextStyle(color: Colors.white,),
                                       height: 100,
-                                      tabs: const [
+                                      tabs:   [
                                          Tab(
-                                          text: "\nCompletion\n  Report",
-                                          // child: Column(crossAxisAlignment: CrossAxisAlignment.center,
-                                          //   children: [Icon(Icons.report),
-                                          //     Text('Completion Report')
-                                          //   ],
-                                          // ),
+                                          child: Column(crossAxisAlignment: CrossAxisAlignment.center,
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [Container(height:30,width: 30 ,decoration:
+                                            const BoxDecoration(image: DecorationImage(image: AssetImage('assets/completion.png'),
+                                            ),),
+                                            ),
+                                              Text('Completion\n  Report',style: GoogleFonts.rubik(color: Colors.white),)
+                                            ],
+                                          ),
                                          ),
                                          Tab(
-                                           text: "\n Marks\nReport",
+                                           child: Column(crossAxisAlignment: CrossAxisAlignment.center,
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [Container(height:30,width: 30 ,decoration:
+                                            const BoxDecoration(image: DecorationImage(image: AssetImage('assets/marks.png'),
+                                            ),),
+                                            ),
+                                              Text(' Marks\nReport',style: GoogleFonts.rubik(color: Colors.white),)
+                                            ],
+                                          ),
                                          ),
                                          Tab(
-                                         text: "\n Skill\nReport",),
+                                        child: Column(crossAxisAlignment: CrossAxisAlignment.center,
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [Container(height:30,width: 30 ,decoration:
+                                            const BoxDecoration(image: DecorationImage(image: AssetImage('assets/skill.png'),
+                                            ),),
+                                            ),
+                                              Text('  Skill\nReport',style: GoogleFonts.rubik(color: Colors.white),)
+                                            ],
+                                          ),),
                                          Tab(
-                                         text: "\n Child\nReport",),
+                                         child: Column(crossAxisAlignment: CrossAxisAlignment.center,
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [Container(height:30,width: 30 ,decoration:
+                                            const BoxDecoration(image: DecorationImage(image: AssetImage('assets/child.png'),
+                                            ),),
+                                            ),
+                                              Text(' Child\nReport',style: GoogleFonts.rubik(color: Colors.white),)
+                                            ],
+                                          ),),
                                        ],
                                     ),
                                       Expanded(
@@ -248,58 +276,9 @@ class _ReportPageState extends State<ReportPage> {
                             ),
                      ),
                      const SizedBox(height: 10,),
-                    // Flexible(child: Row(crossAxisAlignment: CrossAxisAlignment.start,
-                    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //   children: [
-                    //     Flexible(child: Container(height: MediaQuery.of(context).size.height/9,
-                    //     width: MediaQuery.of(context).size.width/4,
-                    //       child: Card(color: Colors.purple,
-                    //       child: Column(crossAxisAlignment: CrossAxisAlignment.center,
-                    //         children: [
-                    //           const Icon(Icons.abc,color: Colors.white,),
-                    //           Text('Completion Report',style: GoogleFonts.rubik(color: Colors.white),textAlign: TextAlign.center,)
-                    //         ],
-                    //       ),),
-                    //       )),
-    
-                    //     Flexible(child: Container(height: MediaQuery.of(context).size.height/9,
-                    //     width: MediaQuery.of(context).size.width/4,
-                    //     child: Card(color: Colors.pink,child: Column(crossAxisAlignment: CrossAxisAlignment.center,
-                    //         children: [
-                    //           const Icon(Icons.abc,color: Colors.white,),
-                    //           Text(' Marks  Report ',style: GoogleFonts.rubik(color: Colors.white),
-                    //           textAlign: TextAlign.center,softWrap: true,)
-                    //         ],
-                    //       ),),
-                    //       )),
-    
-                    //     Flexible(child: Container(height: MediaQuery.of(context).size.height/9,
-                    //     width: MediaQuery.of(context).size.width/4,
-                    //     child: Card(color: Colors.pink,child: Column(crossAxisAlignment: CrossAxisAlignment.center,
-                    //         children: [
-                    //           const Icon(Icons.abc,color: Colors.white,),
-                    //           Text(' Skill    Report ',style: GoogleFonts.rubik(color: Colors.white),
-                    //           textAlign: TextAlign.center,softWrap: true,)
-                    //         ],
-                    //       ),),
-                    //       )),
-    
-                    //     Flexible(child: Container(height: MediaQuery.of(context).size.height/9,
-                    //     width: MediaQuery.of(context).size.width/4,
-                    //     child: Card(color: Colors.pink,child: Column(crossAxisAlignment: CrossAxisAlignment.center,
-                    //         children: [
-                    //           const Icon(Icons.abc,color: Colors.white,),
-                    //           Text(' Child  Report ',style: GoogleFonts.rubik(color: Colors.white),
-                    //           textAlign: TextAlign.center,softWrap: true,)
-                    //         ],
-                    //       ),),
-                    //       )),
-                    //   ],
-                    // )),
 
 
-
-                    GlassmorphicContainer(
+                 GlassmorphicContainer(
                   width: MediaQuery.of(context).size.width,
                     height: 110,
                     borderRadius: 20,
@@ -313,7 +292,7 @@ class _ReportPageState extends State<ReportPage> {
                           const Color(0xFFffffff).withOpacity(0.1),
                           const Color(0xFFFFFFFF).withOpacity(0.05),
                         ],
-                        stops: [
+                        stops: const[
                           0.1,
                           1,
                         ]),

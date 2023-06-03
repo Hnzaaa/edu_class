@@ -145,7 +145,8 @@ class _TimetablePageState extends State<TimetablePage>with SingleTickerProviderS
                     headerStyle: HeaderStyle(headerMargin: const EdgeInsets.all(8),
                     leftChevronIcon: const Icon(Icons.chevron_left,color: Colors.red,),
                     rightChevronIcon: const Icon(Icons.chevron_right,color: Colors.red,),
-                    titleTextStyle: const TextStyle(backgroundColor: MinitoeColortheme.darkpink,
+                    titleTextStyle:   const TextStyle(backgroundColor: MinitoeColortheme.darkpink,
+                    wordSpacing: 2,
                     color: Colors.white,fontSize: 25,),
                     titleTextFormatter: (date, locale) => DateFormat.yMMMEd(locale).format(date),
                     formatButtonVisible: false,titleCentered: true,
@@ -168,7 +169,6 @@ class _TimetablePageState extends State<TimetablePage>with SingleTickerProviderS
                               else{
                                 return null;
                                 }
-                              
                             },
                           ),
                     calendarFormat: CalendarFormat.week,
@@ -233,8 +233,6 @@ class _TimetablePageState extends State<TimetablePage>with SingleTickerProviderS
                   InkWell(onTap: () {
                          Navigator.push(context, MaterialPageRoute(builder: (context)=>const TimetblDetailPage()));
                        },
-                  
-                   
                  child: GlassmorphicContainer(
                   width: MediaQuery.of(context).size.width,
                     height: 110,
