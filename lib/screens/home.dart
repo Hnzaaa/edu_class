@@ -37,9 +37,7 @@ class _HomePageState extends State<HomePage> {
   bool showSelectedLabels = true;
   bool showUnselectedLabels = true;
 
-  Color selectedColor = const Color.fromARGB(255, 228, 138, 198);
-
- 
+  Color selectedColor = MinitoeColortheme.darkpink;
 
     // SnakeNavigationBar({Key? key,required this.navigatorkey,required this.tabItem}):super(key:key);
   // Gradient selectedGradient =
@@ -54,6 +52,14 @@ class _HomePageState extends State<HomePage> {
   
   }
 
+    int _selectedTabIndex = 0;
+  final List<Widget> _children = [
+      const TimetablePage(),
+      const ReportPage(),
+      const AttendencePage(),
+      const NotificationPage()
+  ];
+
   @override
   Widget build(BuildContext context) {
     // Widget child;
@@ -65,7 +71,9 @@ class _HomePageState extends State<HomePage> {
     
     return Scaffold(
       drawer:   const DrawerPage(),
-    body:SizedBox(
+    body:
+    // _children[_selectedTabIndex],
+    SizedBox(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         child: Stack(
@@ -128,7 +136,7 @@ class _HomePageState extends State<HomePage> {
                     IconButton(onPressed: (){
                       Navigator.push(context, MaterialPageRoute(builder: (context)=>const NotificationPage()));
                     },
-                      icon: Badge(child: const Icon(Icons.notifications_outlined,
+                      icon: const Badge(child: Icon(Icons.notifications_outlined,
                       ),)),
                   
                     ],
@@ -322,23 +330,22 @@ class _HomePageState extends State<HomePage> {
         
 
         bottomNavigationBar: Container(height: 60,
-        color: const Color.fromARGB(255, 9, 49, 95),
+        color: MinitoeColortheme.navbar,
           child: SnakeNavigationBar.color(
-            
                 height: 50,
                 behaviour: snakeBarStyle,
                 snakeShape: snakeShape,
                 //  shape: bottomBarShape,
                 //  padding: padding,
-                  backgroundColor: const Color.fromARGB(255, 9, 49, 95),
+                  backgroundColor: MinitoeColortheme.navbar,
                   snakeViewColor: selectedColor,
                   selectedItemColor:snakeShape == SnakeShape.indicator ? selectedColor : null,
                   unselectedItemColor: Colors.white,
                   showUnselectedLabels: showUnselectedLabels,
                   showSelectedLabels: showSelectedLabels,
-                  currentIndex: _selectedIndex,
-                  onTap: (index) => setState(() => _selectedIndex = index),
-                  items:      [
+                  currentIndex: _selectedTabIndex,
+                  onTap: onTabTapped,
+                  items:  [
             BottomNavigationBarItem(activeIcon: Container(height:20,width: 20 ,decoration:
                 const BoxDecoration(image: DecorationImage(image: AssetImage('assets/timetable.png'),
                 ),),
@@ -392,8 +399,126 @@ class _HomePageState extends State<HomePage> {
         ),
       
     );
+    
   }
+  void onTabTapped(int index) {
+   setState(() {
+     _selectedTabIndex = index;
+   });
+ }
+}
+
+class BottmNavigation extends StatefulWidget {
+  const BottmNavigation({super.key});
+
+  @override
+  State<BottmNavigation> createState() => _BottmNavigationState();
+}
+
+class _BottmNavigationState extends State<BottmNavigation> {
+
+  ShapeBorder? bottomBarShape = const RoundedRectangleBorder(
+    borderRadius: BorderRadius.all(Radius.circular(25)),
+  );
+  SnakeBarBehaviour snakeBarStyle = SnakeBarBehaviour.floating;
+  EdgeInsets padding = const EdgeInsets.all(12);
+
+  SnakeShape snakeShape = SnakeShape.circle;
+
+  bool showSelectedLabels = true;
+  bool showUnselectedLabels = true;
+
+  Color selectedColor = MinitoeColortheme.darkpink;
+  @override
+  void initState(){
+    super.initState();
+  
   }
-
-
-
+   int _selectedTabIndex = 0;
+  final List<Widget> _children = [
+      const HomePage(),
+      const TimetablePage(),
+      const ReportPage(),
+      const AttendencePage(),
+      const NotificationPage()
+  ];
+  @override
+  Widget build(BuildContext context) {
+    
+    return Scaffold(
+    bottomNavigationBar: Container(height: 60,
+        color: MinitoeColortheme.navbar,
+          child: SnakeNavigationBar.color(
+                height: 50,
+                behaviour: snakeBarStyle,
+                snakeShape: snakeShape,
+                //  shape: bottomBarShape,
+                //  padding: padding,
+                  backgroundColor: MinitoeColortheme.navbar,
+                  snakeViewColor: selectedColor,
+                  selectedItemColor:snakeShape == SnakeShape.indicator ? selectedColor : null,
+                  unselectedItemColor: Colors.white,
+                  showUnselectedLabels: showUnselectedLabels,
+                  showSelectedLabels: showSelectedLabels,
+                  currentIndex: _selectedTabIndex,
+                  onTap: onTabTapped,
+                  items:  [
+            BottomNavigationBarItem(activeIcon: Container(height:20,width: 20 ,decoration:
+                const BoxDecoration(image: DecorationImage(image: AssetImage('assets/timetable.png'),
+                ),),
+                ),
+                icon: Container(height:20,width: 20 ,decoration:
+                const BoxDecoration(image: DecorationImage(image: AssetImage('assets/timetable.png'),
+                ),),
+                ),
+                label: 'Timetable'),
+            BottomNavigationBarItem(activeIcon:  Container(height:20,width: 20 ,decoration:
+                const BoxDecoration(image: DecorationImage(image: AssetImage('assets/classes.png'),
+                ),),
+                ),
+                icon:  Container(height:20,width: 20 ,decoration:
+                const BoxDecoration(image: DecorationImage(image: AssetImage('assets/classes.png'),
+                ),),
+                ),
+                label: 'Classes'),
+            BottomNavigationBarItem(activeIcon: Container(height:20,width: 20 ,decoration:
+                const BoxDecoration(image: DecorationImage(image: AssetImage('assets/attendence.png'),
+                ),),
+                ),
+              icon:  Container(height:20,width: 20 ,decoration:
+                const BoxDecoration(image: DecorationImage(image: AssetImage('assets/attendence.png'),
+                ),),
+                ),
+            label: 'Attendance'),
+            BottomNavigationBarItem(activeIcon:  Container(height:20,width: 20 ,decoration:
+                const BoxDecoration(image: DecorationImage(image: AssetImage('assets/report.png'),
+                ),),
+                ),
+                icon:  Container(height:20,width: 20 ,decoration:
+                const BoxDecoration(image: DecorationImage(image: AssetImage('assets/report.png'),
+                ),),
+                ),
+                label: 'Report'),
+            BottomNavigationBarItem(
+              activeIcon: Container(height:20,width: 20 ,decoration:
+                const BoxDecoration(image: DecorationImage(image: AssetImage('assets/assembly.png'),
+                ),),
+                ),
+                icon: Container(height:20,width: 20 ,decoration:
+                const BoxDecoration(image: DecorationImage(image: AssetImage('assets/assembly.png'),
+                ),),
+                ),
+                label: 'Assembly')
+                ],
+                selectedLabelStyle: const TextStyle(fontSize: 24,color: Colors.white),
+                unselectedLabelStyle: const TextStyle(fontSize: 10,color: Colors.white),
+            ),
+        ),
+    );
+}
+void onTabTapped(int index) {
+   setState(() {
+     _selectedTabIndex = index;
+   });
+ }
+}
