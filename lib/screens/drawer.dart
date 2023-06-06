@@ -54,10 +54,10 @@ class _DrawerPageState extends State<DrawerPage> {
           ),
         ),
           ListTile(
-          leading: Icon(Icons.home,color: Colors.white,),
-          title: Text('Home',style: TextStyle(color: Colors.white,fontSize: 20),),
+          leading: const Icon(Icons.home,color: Colors.white,),
+          title: const Text('Home',style: TextStyle(color: Colors.white,fontSize: 20),),
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>const HomePage()));
           },
         ),
           ListTile(
@@ -65,9 +65,9 @@ class _DrawerPageState extends State<DrawerPage> {
                 const BoxDecoration(image: DecorationImage(image: AssetImage('assets/timetable.png'),
                 ),),
                 ),
-          title: Text('Timetable',style: TextStyle(color: Colors.white,fontSize: 20),),
+          title: const Text('Timetable',style: TextStyle(color: Colors.white,fontSize: 20),),
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>TimetablePage()));
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>const TimetablePage()));
           },
         ),
           ListTile(
@@ -75,9 +75,9 @@ class _DrawerPageState extends State<DrawerPage> {
                 const BoxDecoration(image: DecorationImage(image: AssetImage('assets/classes.png'),
                 ),),
                 ),
-          title: Text('Classes',style: TextStyle(color: Colors.white,fontSize: 20),),
+          title: const Text('Classes',style: TextStyle(color: Colors.white,fontSize: 20),),
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>const HomePage()));
           },
         ),
           ListTile(
@@ -85,9 +85,9 @@ class _DrawerPageState extends State<DrawerPage> {
                 const BoxDecoration(image: DecorationImage(image: AssetImage('assets/report.png'),
                 ),),
                 ),
-          title: Text('Reports',style: TextStyle(color: Colors.white,fontSize: 20),),
+          title: const Text('Reports',style: TextStyle(color: Colors.white,fontSize: 20),),
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>ReportPage()));
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>const ReportPage()));
           },
         ),
       ],

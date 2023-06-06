@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> {
     body:
     // _children[_selectedTabIndex],
     SizedBox(
-        height: MediaQuery.of(context).size.height,
+      height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         child: Stack(
           children: [

@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:edu_minitoe/consts/colors.dart';
 import 'package:edu_minitoe/screens/drawer.dart';
@@ -126,7 +124,7 @@ class _ReportPageState extends State<ReportPage> {
                       IconButton(onPressed: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>const NotificationPage()));
                       },
-                        icon: Badge(child: const Icon(Icons.notifications_outlined,
+                        icon: const Badge(child: Icon(Icons.notifications_outlined,
                       ),)),
                     
                       ],
@@ -140,10 +138,10 @@ class _ReportPageState extends State<ReportPage> {
                         children: [
                           DropdownButton<String>(
                             underline: Container(
-                                height: 2,width: 500,
+                                height: 1.5,width: 500,
                                 color: Colors.grey,
                               ),
-                            items: <String>['A', 'B', 'C', 'D'].map((String value) {
+                            items: <String>['Abggffgfhhsgffgfg', 'B', 'C', 'D'].map((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
                                 child: Text(value),
@@ -152,10 +150,10 @@ class _ReportPageState extends State<ReportPage> {
                             onChanged: (_) {},
                           ),
                           DropdownButton<String>(underline: Container(
-                                height: 2,width: 500,
+                                height:1.5,width: 500,
                                 color: Colors.grey,
                               ),
-                           items: <String>['A', 'B', 'C', 'D'].map((String value) {
+                           items: <String>['Agfhfghhghnfghfg', 'B', 'C', 'D'].map((String value) {
                              return DropdownMenuItem<String>(
                                value: value,
                                child: Text(value),
@@ -175,8 +173,8 @@ class _ReportPageState extends State<ReportPage> {
                                 child: Column(
                                   children: <Widget>[
                                     ButtonsTabBar(
-                                      // physics: const NeverScrollableScrollPhysics() ,
-                                      duration: 0,
+                                      physics: const NeverScrollableScrollPhysics() ,
+                                      duration: 240,
                                       elevation: 5,
                                       radius: 12,
                                       // contentPadding: const EdgeInsets.all(14) ,
@@ -185,13 +183,13 @@ class _ReportPageState extends State<ReportPage> {
                                       // backgroundColor: Colors.pink,
                                       // borderColor: Colors.transparent,
                                       unselectedBackgroundColor: MinitoeColortheme.darkpink,
-                                      center: true,
+                                      //center: true,
                                       decoration: const BoxDecoration(
                                         gradient: LinearGradient(
                                           colors: <Color>[
-                                            Color.fromARGB(255, 70, 13, 161),
-                                            Color.fromARGB(255, 105, 25, 210),
-                                            Color.fromARGB(255, 98, 113, 247),
+                                            Color.fromARGB(255, 75, 24, 158),
+                                            Color.fromARGB(255, 77, 27, 158),
+                                            Color.fromARGB(255, 77, 27, 158),
                                           ],
                                         ),
                                       ),
@@ -247,7 +245,7 @@ class _ReportPageState extends State<ReportPage> {
                                       child: TabBarView(
                                         children:  <Widget>[
                                           Container(
-                                            child: const Expanded(
+                                            child:  const Expanded(
                                             child: TabBar( 
                                               tabs: <Widget>[
                                               Tab(text: 'Completed',),

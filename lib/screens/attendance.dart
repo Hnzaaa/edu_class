@@ -1,3 +1,5 @@
+import 'dart:core';
+
 import 'package:edu_minitoe/consts/colors.dart';
 import 'package:edu_minitoe/screens/drawer.dart';
 import 'package:edu_minitoe/screens/home.dart';
@@ -143,6 +145,8 @@ class _AttendencePageState extends State<AttendencePage> {
                              child: Center(
                                  child: TextField(
                                   textAlign: TextAlign.center,
+                                  //autofillHints:  AutofillHints.DateTime.now(),
+                                  enableSuggestions: true,
                                controller: dateInput,
                                //editing controller of this TextField
                                style: GoogleFonts.rubik(fontSize: 15),
@@ -166,16 +170,18 @@ class _AttendencePageState extends State<AttendencePage> {
                                      lastDate: DateTime(2500));
                               
                                  if (pickedDate != null) {
-                                   print(
-                                       pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
-                                   String formattedDate =
-                                       DateFormat('dd-MM-yyyy').format(pickedDate);
-                                   print(
-                                       formattedDate); //formatted date output using intl package =>  2021-03-16
+                                   print(pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
+                                   String formattedDate =DateFormat('dd-MM-yyyy').format(pickedDate);
+                                   print(formattedDate); //formatted date output using intl package =>  2021-03-16
                                    setState(() {
                                      dateInput.text =formattedDate; //set output date to TextField value.
                                    });
-                                 } else {}
+                                 } else {
+                                //  DateTime todayDate =DateTime.now();
+                                //    print(todayDate);
+                                //    setState(() {
+                                //      dateInput.text =todayDate as String; 
+                                 }
                                },
                              ))),
                         Flexible(
