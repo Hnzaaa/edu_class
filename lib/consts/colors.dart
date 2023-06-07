@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 class MinitoeColortheme {
-  static const primaryappcolorlightpink = Color.fromARGB(255, 241, 202, 236);
-  static const primaryappcolordarkpink = Color.fromARGB(255, 140, 4, 145);
-  static const textbutton = Color.fromARGB(255, 236, 33, 101);
-  static const fontcolor = Color.fromARGB(255, 12, 72, 121);
-  static const navbar = Color(0xfff343d6d);
-  static const darkpink = Color(0xfffff747c);
-  static const neww = Color(0xfff5013af);
+  static const primaryappcolorlightpink = Color(0xFFF1CAEC);
+  static const primaryappcolordarkpink = Color(0xFF8C0491);
+  static const textbutton = Color(0xFFEC2165);
+  static const fontcolor = Color(0xFF0C4879);
+  static const navbar = Color(0xff343d6d);
+  static const darkpink = Color(0xffff747c);
+  static const purple = Color(0xFF3A0C85);
+  static const neww = Color(0xff5013af);
 }

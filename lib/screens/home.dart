@@ -350,7 +350,7 @@ class _HomePageState extends State<HomePage> {
                 const BoxDecoration(image: DecorationImage(image: AssetImage('assets/timetable.png'),
                 ),),
                 ),
-                icon: Container(height:20,width: 20 ,decoration:
+                icon: Container(height:20,width: 20,decoration:
                 const BoxDecoration(image: DecorationImage(image: AssetImage('assets/timetable.png'),
                 ),),
                 ),

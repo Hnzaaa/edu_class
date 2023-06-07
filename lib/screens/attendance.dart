@@ -141,18 +141,18 @@ class _AttendencePageState extends State<AttendencePage> {
                         Container(color: Colors.transparent,
                           width: MediaQuery.of(context).size.height / 4,
                              padding: const EdgeInsets.all(10),
-                             height: MediaQuery.of(context).size.width / 6,
+                             height: MediaQuery.of(context).size.width / 5,
                              child: Center(
-                                 child: TextField(
+                                 child: TextFormField(
                                   textAlign: TextAlign.center,
-                                  //autofillHints:  AutofillHints.DateTime.now(),
-                                  enableSuggestions: true,
+                                  // autofillHints:  AutofillHints[DateTime.now()],
+                               enableSuggestions: true,
                                controller: dateInput,
                                //editing controller of this TextField
                                style: GoogleFonts.rubik(fontSize: 15),
                                decoration: InputDecoration(filled: true,fillColor: Colors.white,isDense: true,
                                border: OutlineInputBorder(borderRadius: BorderRadius.circular(10),),
-                                   icon:   Container(height:40,width: 40 ,
+                                   icon: Container(height:40,width: 40,
                                    decoration:
                                      const BoxDecoration(image: DecorationImage(image: AssetImage('assets/calender.png'),
                                      ),),
@@ -165,9 +165,10 @@ class _AttendencePageState extends State<AttendencePage> {
                                  DateTime? pickedDate = await showDatePicker(
                                      context: context,
                                      initialDate: DateTime.now(),
-                                     firstDate: DateTime(1900),
+                                     firstDate: DateTime(1950),
                                      //DateTime.now() - not to allow to choose before today.
-                                     lastDate: DateTime(2500));
+                                     lastDate: DateTime(2500),
+                                     currentDate: DateTime.now());
                               
                                  if (pickedDate != null) {
                                    print(pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
@@ -177,10 +178,12 @@ class _AttendencePageState extends State<AttendencePage> {
                                      dateInput.text =formattedDate; //set output date to TextField value.
                                    });
                                  } else {
-                                //  DateTime todayDate =DateTime.now();
-                                //    print(todayDate);
-                                //    setState(() {
-                                //      dateInput.text =todayDate as String; 
+                                        DateTime datetime = DateTime.now();
+                                        String dateStr = DateFormat('dd-MM-yyyy').format(datetime);
+                                         setState(() {
+                                            dateInput.text =dateStr; //set output date to TextField value.
+                                        });
+                                        // print(dateStr);
                                  }
                                },
                              ))),
@@ -269,7 +272,7 @@ class _AttendencePageState extends State<AttendencePage> {
                   Flexible(
                     child: Row(mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                      const CircleAvatar(radius: 35,backgroundColor: Color.fromARGB(255, 163, 50, 88),),
+                      const CircleAvatar(radius: 35,backgroundColor: Color.fromARGB(255, 180, 54, 96),),
                       const SizedBox(width: 15,),
                       Flexible(
                         child: Container(height: MediaQuery.of(context).size.width/7,
@@ -469,7 +472,6 @@ class _AttendencePageState extends State<AttendencePage> {
                 unselectedLabelStyle: const TextStyle(fontSize: 10,color: Colors.white),
             ),
         ),
-      
     );
   }
 }
