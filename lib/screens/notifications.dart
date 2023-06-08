@@ -87,7 +87,7 @@ class _NotificationPageState extends State<NotificationPage> {
                             child: Column(crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text('Heading',style: GoogleFonts.rubik(fontWeight: FontWeight.bold),),
-                                Text('Lorem ipsum dolor sitllis ermentus tortor magna vitaEtiam aliquet dui gvhvhjjhbjkravida lectus porta tincidunt. Mauris convallisvolutpat.vut volutpat ipsum finibus at. Phasellus at finibus turpis. Aenean elit metus, pulvinar id mi eget, faucibus convallis elit. Vivamus tempus turpis sed dapibus graommodo lorem.',
+                                Text('Lorem ipsum dolor sitllis ermentus tortdffsor magna vita Etiam aliquet duigjfd hgbfjdkhg ngjkdgn dg djgndfkjgnd gjfdgbhldsd dgndklfdlg gvhvhjjhbjkravida lectus porta tincidunt. Mauris convallisvolutpat.vut volutpat ipsum finibus at. Phasellus at finibus turpis. Aenean elit metus, pulvinar id mi eget, faucibus convallis elit. Vivamus tempus turpis sed dapibus graommodo lorem.',
                                     style: GoogleFonts.rubik(color: Colors.black),),
                                 Card(color: Colors.pink[100],child: const Text('10:30 am'),),
                                 const Divider(thickness: 2,color: Color.fromARGB(255, 204, 158, 173),)
