@@ -65,29 +65,32 @@ class _NotificationPageState extends State<NotificationPage> {
                     children: [Card(shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50)),
                       color: const Color.fromARGB(255, 83, 15, 95),
-                    child: Container(child: Padding(
+                    child: Container(height: MediaQuery.of(context).size.height/10,
+                      width: MediaQuery.of(context).size.height/5,
+                      decoration: BoxDecoration(color: const Color.fromARGB(255, 83, 15, 95),
+                      borderRadius: BorderRadius.circular(10)),child: Padding(
                       padding: const EdgeInsets.only(top: 8,left: 20),
                       child: Text('Today',style: GoogleFonts.rubik(color: Colors.white,fontSize: 20),),
                     ),
-                      height: MediaQuery.of(context).size.height/10,
-                      width: MediaQuery.of(context).size.height/5,
-                      decoration: BoxDecoration(color: Color.fromARGB(255, 83, 15, 95),
-                      borderRadius: BorderRadius.circular(10)),
                     ),),
                       Padding(
                         padding: const EdgeInsets.only(top: 40),
-                        child: Container(height: MediaQuery.of(context).size.height/4,
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
-                          color: const Color.fromARGB(255, 250, 222, 232)),
-                          child: Padding(
+                        child: Card(
+                          // height: MediaQuery.of(context).size.height/4,
+                        // width: MediaQuery.of(context).size.width,
+                        // decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
+                        //   color: const Color.fromARGB(255, 250, 222, 232)),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                        color: const Color.fromARGB(255, 250, 222, 232),
+                          child:   Padding(
                             padding: const EdgeInsets.all(18.0),
                             child: Column(crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text('Heading'),
-                                Text('data'),
-                                Text('Time'),
-                                Divider(thickness: 2,color: Color.fromARGB(255, 204, 158, 173),)
+                                Text('Heading',style: GoogleFonts.rubik(fontWeight: FontWeight.bold),),
+                                Text('Lorem ipsum dolor sitllis ermentus tortor magna vitaEtiam aliquet dui gvhvhjjhbjkravida lectus porta tincidunt. Mauris convallisvolutpat.vut volutpat ipsum finibus at. Phasellus at finibus turpis. Aenean elit metus, pulvinar id mi eget, faucibus convallis elit. Vivamus tempus turpis sed dapibus graommodo lorem.',
+                                    style: GoogleFonts.rubik(color: Colors.black),),
+                                Card(color: Colors.pink[100],child: const Text('10:30 am'),),
+                                const Divider(thickness: 2,color: Color.fromARGB(255, 204, 158, 173),)
                               ],
                             ),
                           ),),
