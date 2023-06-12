@@ -84,7 +84,7 @@ class _TimetablePageState extends State<TimetablePage>with SingleTickerProviderS
                   Flexible(
                     child: Row(
                       children: [InkWell(onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>const HomePage()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>const BottmNavigation()));
                       },
                         child: const Icon(Icons.arrow_back)),
                         const SizedBox(width: 10,),
@@ -125,7 +125,7 @@ class _TimetablePageState extends State<TimetablePage>with SingleTickerProviderS
                           // ),
                           // prefixIcon:
                         ),
-                                          ),
+                       ),
                       ),
                     const SizedBox(width: 11,),
                     IconButton(onPressed: (){
@@ -141,8 +141,9 @@ class _TimetablePageState extends State<TimetablePage>with SingleTickerProviderS
                   fontSize: 20,fontWeight: FontWeight.bold),),
                   const SizedBox(height: 10,),
 
-                  TableCalendar(rangeEndDay: DateTime.now(),rangeStartDay: DateTime.now(),
-                    headerStyle: HeaderStyle(headerMargin: const EdgeInsets.all(8),
+                  TableCalendar(rangeEndDay: DateTime.now(),rangeStartDay: DateTime.now(),pageJumpingEnabled: true,
+                  availableGestures: AvailableGestures.horizontalSwipe,
+                  headerStyle: HeaderStyle(headerMargin: const EdgeInsets.all(8),
                     leftChevronIcon: const Icon(Icons.chevron_left,color: Colors.red,),
                     rightChevronIcon: const Icon(Icons.chevron_right,color: Colors.red,),
                     titleTextStyle:   const TextStyle(backgroundColor: MinitoeColortheme.darkpink,
@@ -152,10 +153,10 @@ class _TimetablePageState extends State<TimetablePage>with SingleTickerProviderS
                     formatButtonVisible: false,titleCentered: true,
                     decoration: BoxDecoration(color: Colors.transparent,shape: BoxShape.rectangle,
                     borderRadius: BorderRadius.circular(12))),
-                    calendarStyle: const CalendarStyle(outsideDaysVisible: false),
-                    daysOfWeekVisible: false,
-                    weekNumbersVisible: false,
-                    calendarBuilders: CalendarBuilders(
+                  calendarStyle:   const CalendarStyle(outsideDaysVisible: false),
+                  daysOfWeekVisible: false,
+                  weekNumbersVisible: false,
+                  calendarBuilders: CalendarBuilders(
                             dowBuilder: (context, day) {
                               if (day.weekday == DateTime.sunday) {
                                 final text = DateFormat.E().format(day);
@@ -231,7 +232,8 @@ class _TimetablePageState extends State<TimetablePage>with SingleTickerProviderS
     
                   const SizedBox(height: 10,),
                   InkWell(onTap: () {
-                         Navigator.push(context, MaterialPageRoute(builder: (context)=>const TimetblDetailPage()));
+                         Navigator.push(context, MaterialPageRoute(
+                          builder: (context)=>const TimetblDetailPage()));
                        },
                  child: GlassmorphicContainer(
                   width: MediaQuery.of(context).size.width,
@@ -273,7 +275,7 @@ class _TimetablePageState extends State<TimetablePage>with SingleTickerProviderS
                             Card(
                               color: MinitoeColortheme.darkpink,
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: BorderRadius.only(topLeft: Radius.circular(10),bottomLeft:Radius.circular(10)),
                               ),
                               child: Wrap(
                                 children: [
@@ -284,9 +286,9 @@ class _TimetablePageState extends State<TimetablePage>with SingleTickerProviderS
                                         borderRadius: BorderRadius.only(
                                             bottomLeft: Radius.circular(10),
                                             topLeft: Radius.circular(10))),
-                                    margin: const EdgeInsets.only(right: 10),
+                                    margin: const EdgeInsets.only(right: 8),
                                     padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 25),
-                                    child: Text('10:00-11:00',style: GoogleFonts.rubik(color: Colors.pink),),
+                                    child: Text('10:00-11:00',style: GoogleFonts.rubik(color: MinitoeColortheme.darkpink),),
                                   )
                                 ],
                               ),
@@ -338,74 +340,74 @@ class _TimetablePageState extends State<TimetablePage>with SingleTickerProviderS
       ),
         
     
-        bottomNavigationBar: Container(height: 60,
-        color: const Color.fromARGB(255, 9, 49, 95),
-          child: SnakeNavigationBar.color(
-                height: 50,
-                behaviour: snakeBarStyle,
-                snakeShape: snakeShape,
-                //  shape: bottomBarShape,
-                //  padding: padding,
-                  backgroundColor: const Color.fromARGB(255, 9, 49, 95),
-                  snakeViewColor: selectedColor,
-                  selectedItemColor:snakeShape == SnakeShape.indicator ? selectedColor : null,
-                  unselectedItemColor: Colors.white,
-                  showUnselectedLabels: showUnselectedLabels,
-                  showSelectedLabels: showSelectedLabels,
-                  currentIndex: _selectedItemPosition,
-                  onTap: (index) => setState(() => _selectedItemPosition = index),
-                  items:      [
-            BottomNavigationBarItem(activeIcon: Container(height:20,width: 20 ,decoration:
-                const BoxDecoration(image: DecorationImage(image: AssetImage('assets/timetable.png'),
-                ),),
-                ),
-                icon: Container(height:20,width: 20 ,decoration:
-                const BoxDecoration(image: DecorationImage(image: AssetImage('assets/timetable.png'),
-                ),),
-                ),
-                label: 'Timetable'),
-            BottomNavigationBarItem(activeIcon:  Container(height:20,width: 20 ,decoration:
-                const BoxDecoration(image: DecorationImage(image: AssetImage('assets/classes.png'),
-                ),),
-                ),
-                icon:  Container(height:20,width: 20 ,decoration:
-                const BoxDecoration(image: DecorationImage(image: AssetImage('assets/classes.png'),
-                ),),
-                ),
-                label: 'Classes'),
-            BottomNavigationBarItem(activeIcon: Container(height:20,width: 20 ,decoration:
-                const BoxDecoration(image: DecorationImage(image: AssetImage('assets/attendence.png'),
-                ),),
-                ),
-              icon:  Container(height:20,width: 20 ,decoration:
-                const BoxDecoration(image: DecorationImage(image: AssetImage('assets/attendence.png'),
-                ),),
-                ),
-            label: 'Attendance'),
-            BottomNavigationBarItem(activeIcon:  Container(height:20,width: 20 ,decoration:
-                const BoxDecoration(image: DecorationImage(image: AssetImage('assets/report.png'),
-                ),),
-                ),
-                icon:  Container(height:20,width: 20 ,decoration:
-                const BoxDecoration(image: DecorationImage(image: AssetImage('assets/report.png'),
-                ),),
-                ),
-                label: 'Report'),
-            BottomNavigationBarItem(
-              activeIcon: Container(height:20,width: 20 ,decoration:
-                const BoxDecoration(image: DecorationImage(image: AssetImage('assets/assembly.png'),
-                ),),
-                ),
-                icon: Container(height:20,width: 20 ,decoration:
-                const BoxDecoration(image: DecorationImage(image: AssetImage('assets/assembly.png'),
-                ),),
-                ),
-                label: 'Assembly')
-                ],
-                selectedLabelStyle: const TextStyle(fontSize: 24,color: Colors.white),
-                unselectedLabelStyle: const TextStyle(fontSize: 10,color: Colors.white),
-            ),
-        ),
+        // bottomNavigationBar: Container(height: 60,
+        // color: const Color.fromARGB(255, 9, 49, 95),
+        //   child: SnakeNavigationBar.color(
+        //         height: 50,
+        //         behaviour: snakeBarStyle,
+        //         snakeShape: snakeShape,
+        //         //  shape: bottomBarShape,
+        //         //  padding: padding,
+        //           backgroundColor: const Color.fromARGB(255, 9, 49, 95),
+        //           snakeViewColor: selectedColor,
+        //           selectedItemColor:snakeShape == SnakeShape.indicator ? selectedColor : null,
+        //           unselectedItemColor: Colors.white,
+        //           showUnselectedLabels: showUnselectedLabels,
+        //           showSelectedLabels: showSelectedLabels,
+        //           currentIndex: _selectedItemPosition,
+        //           onTap: (index) => setState(() => _selectedItemPosition = index),
+        //           items:      [
+        //     BottomNavigationBarItem(activeIcon: Container(height:20,width: 20 ,decoration:
+        //         const BoxDecoration(image: DecorationImage(image: AssetImage('assets/timetable.png'),
+        //         ),),
+        //         ),
+        //         icon: Container(height:20,width: 20 ,decoration:
+        //         const BoxDecoration(image: DecorationImage(image: AssetImage('assets/timetable.png'),
+        //         ),),
+        //         ),
+        //         label: 'Timetable'),
+        //     BottomNavigationBarItem(activeIcon:  Container(height:20,width: 20 ,decoration:
+        //         const BoxDecoration(image: DecorationImage(image: AssetImage('assets/classes.png'),
+        //         ),),
+        //         ),
+        //         icon:  Container(height:20,width: 20 ,decoration:
+        //         const BoxDecoration(image: DecorationImage(image: AssetImage('assets/classes.png'),
+        //         ),),
+        //         ),
+        //         label: 'Classes'),
+        //     BottomNavigationBarItem(activeIcon: Container(height:20,width: 20 ,decoration:
+        //         const BoxDecoration(image: DecorationImage(image: AssetImage('assets/attendence.png'),
+        //         ),),
+        //         ),
+        //       icon:  Container(height:20,width: 20 ,decoration:
+        //         const BoxDecoration(image: DecorationImage(image: AssetImage('assets/attendence.png'),
+        //         ),),
+        //         ),
+        //     label: 'Attendance'),
+        //     BottomNavigationBarItem(activeIcon:  Container(height:20,width: 20 ,decoration:
+        //         const BoxDecoration(image: DecorationImage(image: AssetImage('assets/report.png'),
+        //         ),),
+        //         ),
+        //         icon:  Container(height:20,width: 20 ,decoration:
+        //         const BoxDecoration(image: DecorationImage(image: AssetImage('assets/report.png'),
+        //         ),),
+        //         ),
+        //         label: 'Report'),
+        //     BottomNavigationBarItem(
+        //       activeIcon: Container(height:20,width: 20 ,decoration:
+        //         const BoxDecoration(image: DecorationImage(image: AssetImage('assets/assembly.png'),
+        //         ),),
+        //         ),
+        //         icon: Container(height:20,width: 20 ,decoration:
+        //         const BoxDecoration(image: DecorationImage(image: AssetImage('assets/assembly.png'),
+        //         ),),
+        //         ),
+        //         label: 'Assembly')
+        //         ],
+        //         selectedLabelStyle: const TextStyle(fontSize: 24,color: Colors.white),
+        //         unselectedLabelStyle: const TextStyle(fontSize: 10,color: Colors.white),
+        //     ),
+        // ),
       
     );
   }
