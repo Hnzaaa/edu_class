@@ -9,7 +9,6 @@ import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:glassmorphism/glassmorphism.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:table_calendar/table_calendar.dart';
 
 class TimetablePage extends StatefulWidget {
   const TimetablePage({super.key});
@@ -25,23 +24,21 @@ class _TimetablePageState extends State<TimetablePage>with SingleTickerProviderS
   SnakeBarBehaviour snakeBarStyle = SnakeBarBehaviour.floating;
   EdgeInsets padding = const EdgeInsets.all(12);
 
-  int _selectedItemPosition = 2;
+  // int _selectedItemPosition = 2;
   SnakeShape snakeShape = SnakeShape.circle;
 
   bool showSelectedLabels = true;
   bool showUnselectedLabels = true;
   bool isChecked = false;
-  // List index=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
-
-    
 
   Color selectedColor = const Color.fromARGB(255, 228, 138, 198);
 
-  // late final TabController _tabController= TabController(length: 20, vsync: this);
   @override
   void initState(){
     super.initState();
   }
+final _inputFormat = DateFormat('EEEE-d MMM yyyy');
+  var _selectedDate = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -141,94 +138,101 @@ class _TimetablePageState extends State<TimetablePage>with SingleTickerProviderS
                   fontSize: 20,fontWeight: FontWeight.bold),),
                   const SizedBox(height: 10,),
 
-                  TableCalendar(rangeEndDay: DateTime.now(),rangeStartDay: DateTime.now(),pageJumpingEnabled: true,
-                  availableGestures: AvailableGestures.horizontalSwipe,
-                  headerStyle: HeaderStyle(headerMargin: const EdgeInsets.all(8),
-                    leftChevronIcon: const Icon(Icons.chevron_left,color: Colors.red,),
-                    rightChevronIcon: const Icon(Icons.chevron_right,color: Colors.red,),
-                    titleTextStyle:   const TextStyle(backgroundColor: MinitoeColortheme.darkpink,
-                    wordSpacing: 2,
-                    color: Colors.white,fontSize: 25,),
-                    titleTextFormatter: (date, locale) => DateFormat.yMMMEd(locale).format(date),
-                    formatButtonVisible: false,titleCentered: true,
-                    decoration: BoxDecoration(color: Colors.transparent,shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.circular(12))),
-                  calendarStyle:   const CalendarStyle(outsideDaysVisible: false),
-                  daysOfWeekVisible: false,
-                  weekNumbersVisible: false,
-                  calendarBuilders: CalendarBuilders(
-                            dowBuilder: (context, day) {
-                              if (day.weekday == DateTime.sunday) {
-                                final text = DateFormat.E().format(day);
-                                return Center(
-                                  child: Text(
-                                    text,
-                                    style: const TextStyle(color: Colors.red),
-                                  ),
-                                );
-                              }
-                              else{
-                                return null;
-                                }
-                            },
-                          ),
-                    calendarFormat: CalendarFormat.week,
-                     firstDay: DateTime.utc(2010, 10, 16),
-                     lastDay: DateTime.utc(2100, 3, 14),
-                     focusedDay: DateTime.now(),
-                   ),
+                  Container(
+                     height: 50,
+                     padding: const EdgeInsets.symmetric(horizontal: 8),
+                     decoration: BoxDecoration(
+                       borderRadius: BorderRadius.circular(8),
+                       color: Colors.transparent
+                     ),
+                     child: Row(
+                       children: [
+                         InkWell(
+                           onTap: () {
+                             _selectedDate = DateTime(_selectedDate.year,
+                                 _selectedDate.month, _selectedDate.day - 1);
+                             setState(() {});
+                           },
+                           child: const Icon(Icons.arrow_back_ios,color: MinitoeColortheme.darkpink,),
+                         ),
+                         const Spacer(),
+                         Card(color: MinitoeColortheme.darkpink,
+                           child: Padding(
+                             padding:   const EdgeInsets.only(top: 8,bottom: 8,left: 15,right: 15),
+                             child: Text(
+                               _inputFormat.format(_selectedDate),style: const TextStyle(color: Colors.white,fontSize: 23),
+                             ),
+                           ),
+                         ),
+                         const Spacer(),
+                         InkWell(
+                           onTap: () {
+                             _selectedDate = DateTime(_selectedDate.year,
+                                 _selectedDate.month, _selectedDate.day + 1);
+                             setState(() {});
+                           },
+                           child: const Icon(Icons.arrow_forward_ios,color: MinitoeColortheme.darkpink,),
+                         ),
+                       ],
+                     )),
+
+                  // TableCalendar(rangeEndDay: DateTime.now(),rangeStartDay: DateTime.now(),pageJumpingEnabled: true,
+                  // availableGestures: AvailableGestures.horizontalSwipe,
+                  // headerStyle: HeaderStyle(headerMargin: const EdgeInsets.all(8),
+                  //   leftChevronIcon: const Icon(Icons.chevron_left,color: Colors.red,),
+                  //   rightChevronIcon: const Icon(Icons.chevron_right,color: Colors.red,),
+                  //   titleTextStyle:   const TextStyle(backgroundColor: MinitoeColortheme.darkpink,
+                  //   wordSpacing: 2,
+                  //   color: Colors.white,fontSize: 25,),
+                  //   titleTextFormatter: (date, locale) => DateFormat.yMMMEd(locale).format(date),
+                  //   formatButtonVisible: false,titleCentered: true,
+                  //   decoration: BoxDecoration(color: Colors.transparent,shape: BoxShape.rectangle,
+                  //   borderRadius: BorderRadius.circular(12))),
+                  // calendarStyle:   const CalendarStyle(outsideDaysVisible: false),
+                  // daysOfWeekVisible: false,
+                  // weekNumbersVisible: false,
+                  // calendarBuilders: CalendarBuilders(
+                  //   selectedBuilder: (_, date, events) => Container(
+                  //               margin: const EdgeInsets.all(6.0),
+                  //               alignment: Alignment.center,
+                  //               decoration: BoxDecoration(
+                  //                   color: Colors.pink,
+                  //                   borderRadius: BorderRadius.circular(20.0)),
+                  //               child: Text(
+                  //                 date.day.toString(),
+                  //                 style: TextStyle(color: Colors.white),
+                  //               )),
+                  //   todayBuilder: (_, date, events) => Container(
+                  //               margin: const EdgeInsets.all(4.0),
+                  //               alignment: Alignment.center,
+                  //               decoration: BoxDecoration(
+                  //                   color: Colors.orange,
+                  //                   borderRadius: BorderRadius.circular(10.0)),
+                  //               child: Text(
+                  //                 date.day.toString(),
+                  //                 style: TextStyle(color: Colors.white),
+                  //               )),
+                  // dowBuilder: (context, day) {
+                  //             if (day.weekday == DateTime.sunday) {
+                  //               final text = DateFormat.E().format(day);
+                  //               return Center(
+                  //                 child: Text(
+                  //                   text,
+                  //                   style: const TextStyle(color: Colors.red),
+                  //                 ),
+                  //               );
+                  //             }
+                  //             else{
+                  //               return null;
+                  //               }
+                  //           },
+                  //         ),
+                  //   calendarFormat: CalendarFormat.week,
+                  //    firstDay: DateTime.utc(2010, 10, 16),
+                  //    lastDay: DateTime.utc(2100, 3, 14),
+                  //    focusedDay: DateTime.now(),
+                  //  ),
     
-                  // Flexible(fit: FlexFit.tight,
-                  //   child: Builder(
-                  //      builder: (context) {
-                  //        return Row(
-                  //          children: [
-                  //            IconButton(
-                  //              icon: const Icon(Icons.arrow_back_ios),
-                  //              onPressed: (){
-                  //                if(_tabController.index > 0){
-                  //                  _tabController.animateTo(_tabController.index - 1,
-                  //                  duration: const Duration(milliseconds: 500), curve: Curves.ease);
-                  //                }else{
-                  //                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Can't go back"),));
-                  //                }
-                  //              },
-                  //            ),
-                  //            Expanded(
-                  //              child: TabBar(
-                  //               tabs: [Card(child: Container(height: 40,))],
-                  //               //  isScrollable: true,
-                  //                controller: _tabController,
-                  //                labelStyle: const TextStyle(
-                  //                  color: Colors.black
-                  //                ),
-                  //                unselectedLabelColor: Colors.black,
-                  //                labelColor: Colors.blue,
-                  //               //  tabs: List.generate(20,(index)
-                  //               //   {
-                  //               //      return Tab(
-                  //               //        text: "Tab $index",
-                  //               //      );
-                  //               //    },
-                  //               //  ),
-                  //              ),
-                  //            ),
-                  //            IconButton(
-                  //              icon: const Icon(Icons.arrow_forward_ios),
-                  //              onPressed: (){
-                  //                if(_tabController.index+1 < 20){
-                  //                  _tabController.animateTo(_tabController.index + 1,
-                  //                  duration: const Duration(milliseconds: 500), curve: Curves.ease);
-                  //                }else{
-                  //                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Can't move forward"),));
-                  //                }
-                  //              },
-                  //            ),
-                  //          ],
-                  //        );
-                  //      }
-                  //    ),
-                  // ),
     
                   const SizedBox(height: 10,),
                   InkWell(onTap: () {
@@ -249,7 +253,7 @@ class _TimetablePageState extends State<TimetablePage>with SingleTickerProviderS
                           const Color(0xFFffffff).withOpacity(0.1),
                           const Color(0xFFFFFFFF).withOpacity(0.05),
                         ],
-                        stops: [
+                        stops: const [
                           0.1,
                           1,
                         ]),
@@ -274,7 +278,7 @@ class _TimetablePageState extends State<TimetablePage>with SingleTickerProviderS
                         
                             Card(
                               color: MinitoeColortheme.darkpink,
-                              shape: RoundedRectangleBorder(
+                              shape: const RoundedRectangleBorder(
                                 borderRadius: BorderRadius.only(topLeft: Radius.circular(10),bottomLeft:Radius.circular(10)),
                               ),
                               child: Wrap(
