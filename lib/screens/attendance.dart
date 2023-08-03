@@ -2,7 +2,7 @@ import 'dart:core';
 
 import 'package:edu_minitoe/consts/colors.dart';
 import 'package:edu_minitoe/screens/drawer.dart';
-import 'package:edu_minitoe/screens/home.dart';
+import 'package:edu_minitoe/screens/navpage.dart';
 import 'package:edu_minitoe/screens/notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
@@ -72,7 +72,7 @@ class _AttendencePageState extends State<AttendencePage> {
                     padding: const EdgeInsets.only(top: 18,right: 18,left: 18),
                     child: Row(
                       children: [InkWell(onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>const HomePage()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>const NavPage()));
                       },
                         child: const Icon(Icons.arrow_back)),
                         const SizedBox(width: 10,),

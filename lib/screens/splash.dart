@@ -15,7 +15,7 @@ class _MySplashPageState extends State<MySplashPage> {
   @override
   void initState(){
     super.initState();
-    Timer(const Duration(seconds: 3), () async {
+    Timer(const Duration(seconds: 5), () async {
       await Navigator.of(context).pushReplacement(
               MaterialPageRoute(builder: (BuildContext context) => const OtpPage()));
     });
@@ -40,30 +40,30 @@ class _MySplashPageState extends State<MySplashPage> {
                         borderRadius: BorderRadius.circular(8),
                         image: const DecorationImage(
                           image: AssetImage(
-                            'assets/splashimg.jpg',
+                            'assets/splashimage.jpg',
                           ),
                           fit: BoxFit.fill,
                         )),
                 ),
-              Padding(
-                padding: const EdgeInsets.all(35.0),
-                // child: Hero(tag: 'tag',
-                child: 
-                Center(child: Container(child: Image.asset('assets/cropped-mintie-png.png',fit: BoxFit.fill,))),
+              // Padding(
+              //   padding: const EdgeInsets.all(35.0),
+              //   // child: Hero(tag: 'tag',
+              //   child: 
+              //   Center(child: Container(child: Image.asset('assets/cropped-mintie-png.png',fit: BoxFit.fill,))),
 
-                // createRectTween:  (begin, end) {
-                //      return MaterialRectArcTween(begin: begin, end: end);
-                //    },
-                // flightShuttleBuilder: (BuildContext flightContext,
-                //     Animation<double> animation,
-                //     HeroFlightDirection flightDirection,
-                //     BuildContext fromHeroContext,
-                //     BuildContext toHeroContext,) {
-                //       // final Hero toHero = toHeroContext.size;
-                //       return OtpPage();
-                //       }
-                // ),
-              )
+              //   // createRectTween:  (begin, end) {
+              //   //      return MaterialRectArcTween(begin: begin, end: end);
+              //   //    },
+              //   // flightShuttleBuilder: (BuildContext flightContext,
+              //   //     Animation<double> animation,
+              //   //     HeroFlightDirection flightDirection,
+              //   //     BuildContext fromHeroContext,
+              //   //     BuildContext toHeroContext,) {
+              //   //       // final Hero toHero = toHeroContext.size;
+              //   //       return OtpPage();
+              //   //       }
+              //   // ),
+              // )
             ] 
           ),
        

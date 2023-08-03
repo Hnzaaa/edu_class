@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:edu_minitoe/consts/colors.dart';
 import 'package:edu_minitoe/screens/drawer.dart';
-import 'package:edu_minitoe/screens/home.dart';
+import 'package:edu_minitoe/screens/navpage.dart';
 import 'package:edu_minitoe/screens/notifications.dart';
 import 'package:edu_minitoe/screens/timetbldetail.dart';
 import 'package:flutter/material.dart';
@@ -81,7 +81,7 @@ final _inputFormat = DateFormat('EEEE-d MMM yyyy');
                   Flexible(
                     child: Row(
                       children: [InkWell(onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>const BottmNavigation()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>const NavPage()));
                       },
                         child: const Icon(Icons.arrow_back)),
                         const SizedBox(width: 10,),

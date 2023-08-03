@@ -1,6 +1,6 @@
 
 import 'package:edu_minitoe/consts/colors.dart';
-import 'package:edu_minitoe/screens/home.dart';
+import 'package:edu_minitoe/screens/navpage.dart';
 import 'package:edu_minitoe/screens/report.dart';
 import 'package:edu_minitoe/screens/timetable.dart';
 import 'package:flutter/material.dart';
@@ -57,7 +57,7 @@ class _DrawerPageState extends State<DrawerPage> {
           leading: const Icon(Icons.home,color: Colors.white,),
           title: const Text('Home',style: TextStyle(color: Colors.white,fontSize: 20),),
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>const HomePage()));
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>const NavPage()));
           },
         ),
           ListTile(
@@ -77,7 +77,7 @@ class _DrawerPageState extends State<DrawerPage> {
                 ),
           title: const Text('Classes',style: TextStyle(color: Colors.white,fontSize: 20),),
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>const HomePage()));
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>const NavPage()));
           },
         ),
           ListTile(

@@ -1,5 +1,5 @@
 import 'package:edu_minitoe/consts/colors.dart';
-import 'package:edu_minitoe/screens/home.dart';
+import 'package:edu_minitoe/screens/navpage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:otp_pin_field/otp_pin_field.dart';
@@ -38,16 +38,17 @@ class _OtpPageState extends State<OtpPage> {
                     )),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 500),
-              child: Image.asset('assets/teacherkids.png',
-              height: MediaQuery.of(context).size.height,
+              padding: const EdgeInsets.only(top: 650),
+              child: Image.asset('assets/login vector.png',
+              height: MediaQuery.of(context).size.height/2,
               width: MediaQuery.of(context).size.width,
-              colorBlendMode: BlendMode.dstATop,
-                 color: Colors.white.withOpacity(.15),
-                    filterQuality: FilterQuality.low,),
+              // colorBlendMode: BlendMode.dstATop,
+                //  color: Colors.white.withOpacity(.15),
+                    // filterQuality: FilterQuality.low,
+                    ),
             ),
           Padding(
-            padding: const EdgeInsets.only(left:38.0, top: 3,right: 38),
+            padding: const EdgeInsets.only(left:38.0, top: 30,right: 38),
             child: SingleChildScrollView(
               child: GestureDetector(
                 child: Column(
@@ -74,7 +75,7 @@ class _OtpPageState extends State<OtpPage> {
                     const SizedBox(height: 20,),
                       Container(alignment: Alignment.topRight, 
                         child: InkWell(child: Text('send OTP',style: 
-                        GoogleFonts.rubik(color: Colors.pink),
+                        GoogleFonts.rubik(color: MinitoeColortheme.textbutton),
                         textAlign: TextAlign.right,),
                          
                         onTap: () { 
@@ -99,7 +100,7 @@ class _OtpPageState extends State<OtpPage> {
                           
                   OtpPinField(
                   key: _otpPinFieldController,
-                  fieldWidth: 40,
+                  fieldWidth: 50,
                   fieldHeight: 50,
                   autoFocus: false,
                   showDefaultKeyboard: true,
@@ -128,14 +129,14 @@ class _OtpPageState extends State<OtpPage> {
                   cursorWidth: 3,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   otpPinFieldDecoration:OtpPinFieldDecoration.defaultPinBoxDecoration),
-                      const SizedBox(height: 20,),
-                       Container(alignment: Alignment.topRight,
-                         child: InkWell(child:
-                          Text('Resend OTP',style: 
-                          GoogleFonts.rubik(color: MinitoeColortheme.textbutton),
-                         textDirection: TextDirection.rtl,)),
-                       ),
-                    const SizedBox(height: 25,),
+                const SizedBox(height: 20,),
+                 Container(alignment: Alignment.topRight,
+                   child: InkWell(child:
+                    Text('Resend OTP',style: 
+                    GoogleFonts.rubik(color: MinitoeColortheme.textbutton),
+                   textDirection: TextDirection.rtl,)),
+                 ),
+                 const SizedBox(height: 25,),
               
                     Container(
                       height: 70,
@@ -154,7 +155,7 @@ class _OtpPageState extends State<OtpPage> {
               
                       child: ElevatedButton(onPressed: (){
                         Navigator.push(context, 
-                          PageRouteBuilder(pageBuilder: (_, __, ___) =>const HomePage(),
+                          PageRouteBuilder(pageBuilder: (_, __, ___) =>const NavPage(),
                           transitionDuration: Duration(seconds: 2),
                           // reverseTransitionDuration: Duration(seconds: 2)
                           ));
