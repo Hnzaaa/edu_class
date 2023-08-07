@@ -21,7 +21,7 @@ class _ReportPageState extends State<ReportPage> {
   SnakeBarBehaviour snakeBarStyle = SnakeBarBehaviour.floating;
   EdgeInsets padding = const EdgeInsets.all(12);
 
-  int _selectedItemPosition = 2;
+  // int _selectedItemPosition = 2;
   SnakeShape snakeShape = SnakeShape.circle;
 
   bool showSelectedLabels = true;

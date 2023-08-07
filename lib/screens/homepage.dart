@@ -1,6 +1,7 @@
 import 'package:edu_minitoe/consts/colors.dart';
 import 'package:edu_minitoe/screens/drawer.dart';
 import 'package:edu_minitoe/screens/notifications.dart';
+import 'package:edu_minitoe/screens/reminder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:glassmorphism/glassmorphism.dart';
@@ -202,7 +203,10 @@ _dateCallback(DateTime date) {
                                 ),
                               ),
                                SizedBox(width: 70.w,),
-                               Icon(Icons.arrow_forward_ios_rounded,color: Colors.white,size: 45.sp,)
+                               InkWell(onTap: () {
+                                 Navigator.push(context, MaterialPageRoute(builder: (context)=>const ReminderPage()));
+                               },
+                                child: Icon(Icons.arrow_forward_ios_rounded,color: Colors.white,size: 45.sp,))
                              ],),
                             ),
                           ]),
@@ -482,7 +486,7 @@ class _G2xSimpleWeekCalendarState extends State<G2xSimpleWeekCalendar>
     //Collapse
     _heightCollapse = widget.bodyHeight;
     _collapseController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 500));
+        AnimationController(vsync: this, duration: const Duration(milliseconds: 500));
     _collpseAnimation = Tween<double>(begin: widget.bodyHeight, end: 0)
         .animate(_collapseController!);
     _collapseController!.addListener(() {
@@ -558,7 +562,7 @@ class _G2xSimpleWeekCalendarState extends State<G2xSimpleWeekCalendar>
         Container(
             //height: _heightCollapse,
             decoration: widget.backgroundDecoration,
-            padding: EdgeInsets.only(bottom: 5, left: 5, right: 5),
+            padding: const EdgeInsets.only(bottom: 5, left: 5, right: 5),
             child: Row(
                mainAxisAlignment: MainAxisAlignment.spaceAround,
                children: widget.strWeekDays.map((i) {
@@ -566,11 +570,11 @@ class _G2xSimpleWeekCalendarState extends State<G2xSimpleWeekCalendar>
                      onTap: () =>
                          _setSelectedDate(widget.strWeekDays.indexOf(i)),
                      child: Container(
-                       padding: EdgeInsets.all(5),
+                       padding: const EdgeInsets.all(5),
                        decoration:
                            selectedIndex == widget.strWeekDays.indexOf(i)
                                ? widget.selectedBackgroundDecoration
-                               : BoxDecoration(),
+                               : const BoxDecoration(),
                        child: Card(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                        color: selectedIndex == widget.strWeekDays.indexOf(i)?MinitoeColortheme.darkpink:Colors.white ,
                          child: Padding(
@@ -596,7 +600,7 @@ class _G2xSimpleWeekCalendarState extends State<G2xSimpleWeekCalendar>
                                                  widget.strWeekDays.indexOf(i)
                                              ? GoogleFonts.rubik(color: Colors.white,fontSize: 20.sp,fontWeight: FontWeight.w500)
                                              : GoogleFonts.rubik(color:MinitoeColortheme.fontcolor,fontSize: 20.sp,fontWeight: FontWeight.w500)),
-                                              SizedBox(
+                                              const SizedBox(
                                    height: 2,
                                  ),
                                  
